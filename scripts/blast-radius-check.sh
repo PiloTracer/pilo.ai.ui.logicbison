@@ -54,8 +54,18 @@ fi
 
 echo "blast-radius: files=${FILE_COUNT} areas=${AREA_COUNT} risk=${RISK}"
 if [ "$RISK" = "high" ]; then
-  SCOPE_FILE="${REPO_ROOT}/.work.ui/touch-scope"
-  if [ -f "$SCOPE_FILE" ] && grep -qE '"blast_radius_approved"[[:space:]]*:[[:space:]]*true' "$SCOPE_FILE"; then
+  # Prefer the consumer repo's own scope file. REPO_ROOT above resolves to the
+  # framework source (the script's own repo), so a consumer running this gate
+  # would otherwise be checked against the framework's touch-scope file.
+  # Mirrors the Agent OS sibling (scripts/blast-radius-check.sh): cwd wins when
+  # it looks like a consumer checkout.
+  SCOPE_FILE=""
+  if [ -f "$(pwd)/.work.ui/touch-scope" ] || [ -f "$(pwd)/.cursorrules" ]; then
+    SCOPE_FILE="$(pwd)/.work.ui/touch-scope"
+  elif [ -f "${REPO_ROOT}/.work.ui/touch-scope" ]; then
+    SCOPE_FILE="${REPO_ROOT}/.work.ui/touch-scope"
+  fi
+  if [ -n "$SCOPE_FILE" ] && [ -f "$SCOPE_FILE" ] && grep -qE '"blast_radius_approved"[[:space:]]*:[[:space:]]*true' "$SCOPE_FILE"; then
     echo "blast-radius-check: PASS (blast_radius_approved in touch-scope)"
     exit 0
   fi
