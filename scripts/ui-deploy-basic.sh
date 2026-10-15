@@ -2,10 +2,10 @@
 # ui-deploy-basic.sh — Thin-client bootstrap of UI Design OS into a target project.
 #
 # Copies ONLY the minimal scaffold into the target:
-#   - .cursorrules (from templates/cursorrules.ui.template, with AI_UI_SOURCE
-#     token substituted to the absolute path of THIS source framework root, sister
-#     framework cells (Frameworks registry) filled from on-disk discovery, and
-#     source-resolution section appended)
+#   - .cursorrules — absent: created from templates/cursorrules.ui.template
+#     (AI_UI_SOURCE substituted, sister cells discovered, source-resolution
+#     appended); existing: MERGED — marked snippet + source-resolution section
+#     appended only when missing (never replaced)
 #   - .work.ui/ skeleton (HANDOFF_UI, NEXT_UI, UNKNOWNS, plans dirs, READMEs)
 #   - DOCS_UI_STACK.md
 #
@@ -13,14 +13,18 @@
 # are NOT copied — the target's .cursorrules carries an AI_UI_SOURCE pointer so
 # the agent resolves them from the source framework root at runtime (thin-client mode).
 #
-# Default = NO-OVERWRITE: existing target files are preserved by construction.
-# update: no-overwrite + re-syncs the source pointer + appends the Source-
-#   resolution section when missing + lists existing-but-differing local-surface
-#   files as merge candidates for agent rules-aware merge.
-# force: idempotent overwrite of the local scaffold surface only.
+# Default = NO-CLOBBER: existing target files are preserved by construction;
+# an existing .cursorrules is MERGED, never replaced — the marked UI snippet
+# (UI_DESIGN_OS_BEGIN/END) is appended when the block is missing, and the
+# Source-resolution section when missing (both idempotent, both guarded).
+# update: no-clobber + re-syncs the source pointer + lists existing-but-
+#   differing local-surface files as merge candidates for agent rules-aware merge.
+# force: overwrite the local scaffold surface — REQUIRES the explicit token
+#   `confirm-overwrite-cursorrules` when .cursorrules already exists (it would
+#   destroy every other framework's rules in that file).
 # verify: strict audit of the target's .cursorrules wiring (via
 #   scripts/cursorrules-verify.sh); verify --fix also fills machine-fixable
-#   gaps (sister framework paths, missing Source-resolution section).
+#   gaps (marked UI block, Source-resolution section, sister framework paths).
 #
 # Flag equivalence: verbs work WITH or WITHOUT the "--" prefix, in any
 # position relative to the target path — these are identical:
@@ -35,11 +39,12 @@
 # Override the source with AI_UI_ROOT=/abs/path/to/ui-design-os-source if needed.
 #
 # Usage:
-#   bash scripts/ui-deploy-basic.sh <target-path>              # no-overwrite (skip existing)
+#   bash scripts/ui-deploy-basic.sh <target-path>              # no-clobber (merge missing UI block)
 #   bash scripts/ui-deploy-basic.sh <target-path> status       # read-only report (always exit 0)
 #   bash scripts/ui-deploy-basic.sh <target-path> verify [--fix] # strict .cursorrules audit
-#   bash scripts/ui-deploy-basic.sh <target-path> update       # no-overwrite + self-heal + merge list
-#   bash scripts/ui-deploy-basic.sh <target-path> force        # overwrite local scaffold (legacy)
+#   bash scripts/ui-deploy-basic.sh <target-path> update       # no-clobber + self-heal + merge list
+#   bash scripts/ui-deploy-basic.sh <target-path> force confirm-overwrite-cursorrules
+#                                                               # overwrite scaffold (explicit opt-in)
 #   AI_UI_ROOT=/path/to/ui-design-os-source bash scripts/ui-deploy-basic.sh <target-path>
 #
 set -euo pipefail
@@ -47,6 +52,7 @@ set -euo pipefail
 # ── Argument parsing (verb == --verb, any position; "-" ignored) ──────
 MODE=""
 FIX=0
+CONFIRM_OVERWRITE=0
 RAW_TARGET=""
 for a in "$@"; do
   case "$a" in
@@ -54,6 +60,7 @@ for a in "$@"; do
     verify|--verify) MODE="verify" ;;
     update|--update) MODE="update" ;;
     force|--force)   MODE="force" ;;
+    confirm-overwrite-cursorrules|--confirm-overwrite-cursorrules) CONFIRM_OVERWRITE=1 ;;
     --fix)           FIX=1 ;;
     -)               ;;  # agent-syntax separator
     --*)             echo "ERROR: unknown flag: $a" >&2; exit 1 ;;
@@ -127,7 +134,7 @@ WORK_UI_FILES=(
 
 echo "=== ui-deploy-basic (UI Design OS) → $DEST_ROOT (thin-client bootstrap) ==="
 echo "  source: $AI_UI_ROOT"
-echo "  mode:   $MODE (no-overwrite by default)"
+echo "  mode:   $MODE (no-clobber by default; force needs confirm-overwrite-cursorrules)"
 
 if [[ -d "${DEST_ROOT}/.ai.ui/skills" ]]; then
   echo "  WARN: target has local .ai.ui/skills/ directory (fat-client leak)"
@@ -227,36 +234,91 @@ write_cursorules() {
   fi
 }
 
-# Pre-scan: detect whether target already has a thin-client pointer set.
-existing_source=""
-if [[ -f "$CURS_DEST" ]]; then
-  existing_source="$(grep -oE 'AI_UI_SOURCE=[^ ]*' "$CURS_DEST" | head -1 | cut -d= -f2- || true)"
-fi
+# ── Merge helpers for an EXISTING .cursorrules (both idempotent) ───────
+# Audit 20261015 F-01/F-02: the merge artifact for a file that already exists
+# is the MARKED snippet — the full standalone template is only for creating a
+# file that does not exist yet. Both helpers refuse to create a second copy
+# of content that exists without its marker (F-03 duplicate trap).
+SNIP_TPL="${AI_UI_ROOT}/templates/cursorrules.ui.snippet.template"
 
-# Step 1: .cursorrules (no-overwrite by default; force overwrites).
-if [[ "$MODE" == "force" ]]; then
-  write_cursorules force
-else
-  if [[ -f "$CURS_DEST" ]]; then
-    echo "  cursorules: skip (exists) — keeping existing target .cursorrules"
-  else
-    write_cursorules skip
+ui_contract_unmarked() {
+  # UI contract text present WITHOUT the marker pair: a legacy unmarked
+  # section or pre-marker standalone file (the UI full-template H1 carries the
+  # "(UI Design OS)" suffix — Agent OS shares the base H1 without it).
+  # Appending the snippet there would duplicate the contract — refuse and tell
+  # the operator how to repair.
+  grep -qE '^(## UI Design OS|# AI Agent Rules.*\(UI Design OS\))' "$CURS_DEST" 2>/dev/null
+}
+
+ensure_source_resolution() {
+  [[ -f "$CURS_DEST" ]] || return 0
+  if grep -q '^## Source resolution.*(UI Design OS)' "$CURS_DEST" 2>/dev/null; then
+    return 0
   fi
-fi
-
-# update self-heal #1: append the UI Design OS Source-resolution section when the
-# existing .cursorrules lacks it entirely (e.g. fat-client template, Agent OS
-# base, or another framework's own Source-resolution section — matched on the
-# UI-specific heading so e.g. a Business OS `## Source resolution — ... (Business
-# OS)` section does not suppress the UI append).
-if [[ "$MODE" == "update" ]] && [[ -f "$CURS_DEST" ]] && ! grep -q '^## Source resolution.*(UI Design OS)' "$CURS_DEST"; then
   {
     echo ""
     awk '/^## Source resolution/{f=1} f&&/^---$/{exit} f' "$TPL_CURS" \
       | perl -pe "s/AI_UI_SOURCE=REPLACE_BASICUI_SOURCE/AI_UI_SOURCE=${AI_UI_ROOT_ESC}/"
   } >> "$CURS_DEST"
   echo "  cursorules: appended Source-resolution section (thin-client wiring, AI_UI_SOURCE=$AI_UI_ROOT)"
+}
+
+ensure_ui_block() {
+  [[ -f "$CURS_DEST" ]] || return 0
+  if grep -q 'UI_DESIGN_OS_BEGIN' "$CURS_DEST" 2>/dev/null; then
+    echo "  cursorules: UI block already present (UI_DESIGN_OS_BEGIN) — kept, no merge needed"
+    return 0
+  fi
+  if ui_contract_unmarked; then
+    echo "  cursorules: UNMARKED UI contract already present (pre-marker deployment) — merge refused to avoid a duplicate."
+    echo "    repair: wrap the existing UI section in <!-- UI_DESIGN_OS_BEGIN --> / <!-- UI_DESIGN_OS_END -->,"
+    echo "    then re-run (verify --fix reports the same finding)."
+    return 0
+  fi
+  if [[ ! -f "$SNIP_TPL" ]]; then
+    echo "  BLOCKED: snippet template missing at $SNIP_TPL" >&2
+    return 1
+  fi
+  {
+    echo ""
+    cat "$SNIP_TPL"
+  } >> "$CURS_DEST"
+  echo "  cursorules: merged marked UI block (UI_DESIGN_OS_BEGIN/END appended — existing rules preserved)"
+}
+
+# Pre-scan: detect whether target already has a thin-client pointer set.
+existing_source=""
+if [[ -f "$CURS_DEST" ]]; then
+  existing_source="$(grep -oE 'AI_UI_SOURCE=[^ ]*' "$CURS_DEST" | head -1 | cut -d= -f2- || true)"
 fi
+
+# Step 1: .cursorrules — create when absent; MERGE the marked snippet into an
+# existing file (F-01/F-02 — the old `skip` branch left targets with the UI
+# pointer and none of the contract); force = wholesale overwrite, which
+# requires naming `confirm-overwrite-cursorrules` explicitly (F-09).
+if [[ "$MODE" == "force" ]]; then
+  if [[ -f "$CURS_DEST" && "$CONFIRM_OVERWRITE" -ne 1 ]]; then
+    lost="$(grep -oE '(SOC_DESIGN_OS_BEGIN|FLUTTER_AGENT_OS_BEGIN|AGENT_OS_SOURCE=|Core Principles)' "$CURS_DEST" 2>/dev/null | sort -u | paste -sd', ' - || true)"
+    echo "  BLOCKED: force would replace .cursorrules wholesale ($(wc -l < "$CURS_DEST") lines)"
+    [[ -n "$lost" ]] && echo "    content that would be LOST: ${lost}"
+    echo "    to proceed, name the confirmation token explicitly:"
+    echo "      bash ${AI_UI_ROOT}/scripts/ui-deploy-basic.sh ${DEST_ROOT} force confirm-overwrite-cursorrules"
+    echo "    otherwise use 'update' (self-heal + merge) — the normal, non-destructive path."
+    exit 1
+  fi
+  write_cursorules force
+else
+  if [[ -f "$CURS_DEST" ]]; then
+    echo "  cursorules: exists — merging missing UI pieces (no-clobber)"
+    ensure_source_resolution
+    ensure_ui_block
+  else
+    write_cursorules skip
+  fi
+fi
+
+# update self-heal #1: the Source-resolution section is also ensured above for
+# every write mode that touches an existing file (shared helper).
 
 # update self-heal #2: re-sync the source pointer when the existing .cursorrules
 # still carries REPLACE_BASICUI_SOURCE or a stale path.

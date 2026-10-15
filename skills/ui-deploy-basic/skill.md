@@ -33,7 +33,7 @@ Thin-client deploy of the `.ai.ui` framework. The target project receives only t
 
 ## Parse invocation
 
-**Flag equivalence (hard rule):** verbs work **with or without** the `--` prefix, in any position relative to the target path. `@ui-deploy-basic /path update`, `@ui-deploy-basic /path --update`, and `@ui-deploy-basic --update /path` are **identical**. The agent-syntax separator `-` between verb and path is ignored.
+**Flag equivalence (hard rule):** verbs work **with or without** the `--` prefix, in any position relative to the target path. `@ui-deploy-basic /path update`, `@ui-deploy-basic /path --update`, and `@ui-deploy-basic --update /path` are **identical**. The agent-syntax separator `-` between verb and path is ignored. The literal token `confirm-overwrite-cursorrules` is a recognized argument (never treated as a path or unknown).
 
 | User says | Direction | Mode |
 |-----------|-----------|------|
@@ -43,6 +43,7 @@ Thin-client deploy of the `.ai.ui` framework. The target project receives only t
 | `@ui-deploy-basic verify` | audit | strict `.cursorrules` wiring audit (exit 1 on blocking gap): pointer reachability, Source-resolution section, sister framework paths, `.work.ui/` |
 | `@ui-deploy-basic verify --fix` | audit+fix | as `verify`, plus fills machine-fixable gaps: pins `REPLACE:AGENT_OS_PATH` / `REPLACE:AI_<FW>_PATH` for all six sisters (`.ai.biz`, `.ai.soc`, `.ai.cto`, `.ai.flutter`, `.ai.mlt`) from on-disk discovery (family naming `pilo.ai.<fw>.logicbison` then legacy `.ai.<fw>`), repoints stale absolute cells, appends missing Source-resolution section |
 | `@ui-deploy-basic status` | report | read-only (always exit 0): same checks as `verify` in report form |
+| `@ui-deploy-basic /path --force confirm-overwrite-cursorrules` | outbound | overwrite `.cursorrules` wholesale — **requires the confirmation token** when the file exists; without it the script BLOCKS (exit 1) and lists the content that would be lost (sister blocks included) |
 
 **Default:** `status` if no verb matches. **Aliases:** `bootstrap-thin`, `thin-ui` → bare `@ui-deploy-basic`.
 
@@ -54,7 +55,7 @@ Thin-client deploy of the `.ai.ui` framework. The target project receives only t
 
 | Path | Source | If target exists |
 |------|--------|-------------------|
-| `.cursorrules` | `templates/cursorrules.ui.template` with `AI_UI_SOURCE=<source>` substituted and source-resolution section appended | skip (preserve); `force` overwrites |
+| `.cursorrules` | `templates/cursorrules.ui.template` with `AI_UI_SOURCE=<source>` substituted and source-resolution section appended | skip (preserve); merges an existing unmarked UI contract; `force` overwrites **only** with the explicit `confirm-overwrite-cursorrules` token (blocked + lost-content report otherwise) |
 | `.work.ui/README.md`, `context/HANDOFF_UI.md`, `plans/NEXT_UI.md`, `plans/ASSUMPTIONS.md`, `plans/RISK_REGISTRY.md`, `plans/UNKNOWNS.md`, `screens/README.md`, `decisions/README.md`, `prompts/README.md`, `design-system/CATALOG.md` | `templates/work.ui/*.template` (suffix stripped) | skip (preserve) |
 | `.work.ui/plans/{foundation,full}/.gitkeep` | created empty | skip (preserve) |
 | `DOCS_UI_STACK.md` | `templates/DOCS_UI_STACK.md.template` | skip (preserve) |
@@ -70,7 +71,7 @@ Thin-client deploy of the `.ai.ui` framework. The target project receives only t
 | Source `templates/cursorrules.ui.template` missing | **Block**: source is not a valid `.ai.ui` framework root |
 | Target dir does not exist | **Block**: report missing path |
 | Target resolves to the source framework itself | **Block**: refusing to deploy the source into itself |
-| Target already has local `.ai.ui/skills/` | **Block** fat-client leak (use `force` to override, or remove local `.ai.ui/` first) |
+| Target already has local `.ai.ui/skills/` | **Block** fat-client leak (use `force` with `confirm-overwrite-cursorrules` when `.cursorrules` exists, or remove local `.ai.ui/` first) |
 | Target `.cursorrules` exists + lacks the Source-resolution section | In `update` mode → **auto-appended** by the script (thin-client wiring); in default mode → skip (preserve) and report that source-resolution is not wired |
 
 ---
@@ -79,14 +80,14 @@ Thin-client deploy of the `.ai.ui` framework. The target project receives only t
 
 1. Resolve source `AI_UI_ROOT` (explicit `AI_UI_ROOT` env, else script's parent). Validate `templates/cursorrules.ui.template` exists.
 2. Resolve target = `REPO_ROOT` of the consumer (cwd for in-place, or the named path for outbound).
-3. Write `.cursorrules` into the target from the template, substituting `AI_UI_SOURCE=REPLACE_BASICUI_SOURCE` → `AI_UI_SOURCE=<absolute AI_UI_ROOT>`. **No-overwrite** if `.cursorrules` exists; `force` overwrites. If the template lacks a source-resolution section, append it.
+3. Write `.cursorrules` into the target from the template, substituting `AI_UI_SOURCE=REPLACE_BASICUI_SOURCE` → `AI_UI_SOURCE=<absolute AI_UI_ROOT>`. **No-overwrite** if `.cursorrules` exists (an existing *unmarked* UI contract is merged under `UI_DESIGN_OS_BEGIN/END` markers, idempotently); `force` overwrites **only** when the operator names `confirm-overwrite-cursorrules` — otherwise BLOCKED (exit 1) with the content that would be lost. If the template lacks a source-resolution section, append it.
 4. Run the `.work.ui/` + `DOCS_UI_STACK.md` scaffold via `REPO_ROOT=<target> AI_UI_ROOT=<source> bash <source>/templates/bootstrap.sh` (bootstrap's `copy_if_missing` enforces no-overwrite).
 5. Run the **wiring audit** (`scripts/cursorrules-verify.sh --report`) so every deploy ends with evidence of the target's `.cursorrules` state.
 6. Report: source pointer value, `.work.ui/` presence, fat-client leak check, next steps.
 
 **No local `opencode.json`.** UI Design OS does not ship or sync `opencode.json` in consumer repos. When co-installed with Agent OS, register skills via the parent `.ai/opencode.json` (or your host's coding-agent config).
 
-**Idempotent re-run.** Safe to re-run; no-overwrite preserves target customizations. The source pointer is re-synced only in `update` mode (or `force`).
+**Idempotent re-run.** Safe to re-run; no-overwrite preserves target customizations. The source pointer is re-synced only in `update` mode (or `force confirm-overwrite-cursorrules`).
 
 ---
 
@@ -146,7 +147,7 @@ Both delegate to `scripts/cursorrules-verify.sh`; `status` is report-only (alway
 | 3 | Source-resolution section present in target `.cursorrules` | |
 | 4 | Sister framework paths resolvable (pinned or auto-discovered) | |
 | 5 | `.work.ui/` skeleton present (HANDOFF_UI, NEXT_UI, UNKNOWNS at minimum) | |
-| 6 | No-overwrite honored (existing target files preserved; `force` only when explicitly requested) | |
+| 6 | No-overwrite honored (existing target files preserved; `force` only with the explicit `confirm-overwrite-cursorrules` token) | |
 | 7 | `update`: pointer re-synced if stale; Source-resolution appended if missing; merge candidate list produced; no wholesale replaces | |
 | 8 | `verify` exits 0 (or gaps reported; `verify --fix` applied where offered) | |
 | 9 | Fat-client leak checked (no unexpected local `.ai.ui/skills/`) | |

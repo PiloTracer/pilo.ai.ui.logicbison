@@ -6,9 +6,11 @@
 
 **Open:** closed
 
-**Updated:** 2026-08-19
+**Updated:** 2026-10-15
 
-**Closed:** 2026-08-19
+**Closed:** 2026-10-15
+
+**2026-10-15 — deploy reliability from the 20261015 cohabitation audit (owner-invoked @ai-director across 7 sibling repos):** `scripts/cursorrules-verify.sh` marker gate — thin mode missing/duplicate `UI_DESIGN_OS_BEGIN/END` → FAIL (exactly-one pair; fat/framework-root standalone unmarked still ok); `--fix` appends the marked snippet idempotently and refuses to append over an unmarked legacy UI contract; renamed-registry-heading escalated note→warn; `AI_UI_ROOT` env override for moved source dirs. `scripts/ui-deploy-basic.sh` **merges** an existing unmarked UI contract under BEGIN/END markers instead of skip; `force` wholesale-replace now requires the explicit token `confirm-overwrite-cursorrules` (BLOCKED + lost-content listing otherwise); `templates/cursorrules.ui.snippet.template` paths via `$AI_UI_SOURCE`; `templates/cursorrules.ui.template` wrapped in BEGIN/END markers. Skill doc (`ui-deploy-basic/skill.md`) updated: force row, token in flag-equivalence, leak-block, step 3, idempotency, checklist. Regression evidence: framework-verify PASS, `bootstrap-test.sh` PASS, functional matrix (deploy merge / delete-block→fix / force blocked+token / update idempotent) on mktemp targets + read-only pilo-mail. **Verify in-repo:** `bash scripts/framework-verify.sh` · `bash scripts/bootstrap-test.sh` · `bash scripts/cursorrules-verify.sh <target>` · deploy smoke: `bash scripts/ui-deploy-basic.sh /tmp/t --force` (expect BLOCKED exit 1). Note: `scripts/blast-radius-check.sh` carries a **pre-existing uncommitted** change (not part of this session — left dirty deliberately).
 
 **2026-08-19 — ui-deploy-repo removed (operator-directed consistency):** deleted `skills/ui-deploy-repo/` + `scripts/ui-deploy-repo.sh`; every reference swept — `skills/README.md`, `SKILL_DEPENDENCIES.md` (matrix / redirects / vocabulary), `ui-director` skill + reference, `ui-deploy-files` skill.md + shell exclude regex, `framework-verify.sh` (existence check + smoke selftests), `cursorrules-verify.sh` header, `templates/cursorrules.ui.template`, `.quick/deploy-to-project.md`. Deploy family is now `ui-deploy-basic` + `ui-deploy-files` only — parity with Agent OS (`deploy-repo` removed 2026-08-14) and parent orchestrator `pilo.ai.logicbison` (basic + files). Historical CHANGELOG/HANDOFF entries left intact. Gates: touch-scope PASS, blast-radius PASS (approved in touch-scope), framework-verify PASS (18 skills derived), gate-verify PASS.
 

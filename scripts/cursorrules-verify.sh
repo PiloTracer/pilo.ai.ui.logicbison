@@ -8,21 +8,26 @@
 #   bash scripts/cursorrules-verify.sh <repo-root>            # strict audit, exit 1 on blocking gap
 #   bash scripts/cursorrules-verify.sh <repo-root> --fix      # audit + fix what is machine-fixable
 #   bash scripts/cursorrules-verify.sh <repo-root> --report   # same output, always exit 0
+#   AI_UI_ROOT=/abs/path/to/source bash scripts/cursorrules-verify.sh <repo-root>
 #
 # Checks:
-#   1. .cursorrules present and carries UI Design OS rules
+#   1. .cursorrules present and carries the MARKED UI block
+#      (UI_DESIGN_OS_BEGIN/END exactly once — thin-client mode FAILs without
+#      it; bare string matches accepted only for the fat-client standalone
+#      artifact — audit 20261015 F-04; --fix merges the snippet when absent)
 #   2. Client mode: thin (AI_UI_SOURCE set) vs fat (vendored .ai.ui/) vs
 #      framework-root (the repo IS the framework checkout)
 #   3. Framework assets resolvable (thin: $AI_UI_SOURCE/skills/README.md;
 #      fat: .ai.ui/skills/README.md; framework-root: skills/README.md)
 #   4. Source-resolution section present in .cursorrules
 #      (--fix appends it, extracted from the mode-appropriate template)
-#   5. Sister framework paths (Frameworks registry: .ai / .ai.biz / .ai.soc /
-#      .ai.cto / .ai.flutter / .ai.mlt) resolvable from their configured values
-#      or on-disk auto-discovery — family naming (`pilo.ai.<fw>.logicbison`)
-#      first, then legacy `.ai.<fw>` (see scripts/sister-discovery.sh);
-#      --fix fills REPLACE:*_PATH tokens when the sister exists on disk and
-#      repoints stale absolute cells
+#   5. Frameworks registry heading present (warn when renamed/absent — it is
+#      x-director's authoritative discovery source) + sister framework paths
+#      (.ai / .ai.biz / .ai.soc / .ai.cto / .ai.flutter / .ai.mlt) resolvable
+#      from their configured values or on-disk auto-discovery — family naming
+#      (`pilo.ai.<fw>.logicbison`) first, then legacy `.ai.<fw>` (see
+#      scripts/sister-discovery.sh); --fix fills REPLACE:*_PATH tokens when
+#      the sister exists on disk and repoints stale absolute cells
 #   6. .work.ui/ working tree present (warning only)
 #
 # Exit 0 = wired (warnings allowed), 1 = blocking gap, 2 = usage error.
@@ -51,7 +56,13 @@ RULES="${ROOT}/.cursorrules"
 
 # Source framework root + shared sister-framework discovery lib (family naming
 # `pilo.ai.<fw>.logicbison` + legacy `.ai.<fw>` — see scripts/sister-discovery.sh).
-AI_UI_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+# Explicit override wins, else derive from script location (same contract as
+# ui-deploy-basic.sh — the operator may relocate the source framework checkout).
+if [[ -n "${AI_UI_ROOT:-}" ]]; then
+  AI_UI_ROOT="$(cd "$AI_UI_ROOT" && pwd)"
+else
+  AI_UI_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+fi
 source "${AI_UI_ROOT}/scripts/sister-discovery.sh"
 
 FAIL=0
@@ -62,7 +73,9 @@ note() { echo "  note: $*"; }
 
 echo "=== cursorrules verify → ${ROOT} ==="
 
-# ── 1. .cursorrules present + carries UI rules ────────────────────────
+# ── 1. .cursorrules present + block state flags ────────────────────────
+# Verdicts are deferred to §1b (after mode detection): whether a bare string
+# match is acceptable depends on the client mode (audit 20261015 F-04).
 if [[ ! -f "$RULES" ]]; then
   bad ".cursorrules: MISSING — nothing to verify (run a deploy/bootstrap first)"
   echo ""
@@ -72,10 +85,13 @@ if [[ ! -f "$RULES" ]]; then
 fi
 ok ".cursorrules: present"
 
+UI_BLOCK_BEGIN="$(grep -c 'UI_DESIGN_OS_BEGIN' "$RULES" 2>/dev/null || true)"
+UI_BLOCK_END="$(grep -c 'UI_DESIGN_OS_END' "$RULES" 2>/dev/null || true)"
+UI_BLOCK_BEGIN="${UI_BLOCK_BEGIN:-0}"
+UI_BLOCK_END="${UI_BLOCK_END:-0}"
+UI_RULES_TEXT=0
 if grep -qE 'UI_DESIGN_OS_BEGIN|UI Design OS|ui-component-build' "$RULES" 2>/dev/null; then
-  ok "UI Design OS rules: present"
-else
-  bad "UI Design OS rules: absent (no UI_DESIGN_OS_BEGIN block, no standalone UI template markers)"
+  UI_RULES_TEXT=1
 fi
 
 # ── 2. Client mode detection ──────────────────────────────────────────
@@ -111,6 +127,42 @@ case "$MODE" in
   thin) FW_DIR="$SRC" ;;
   fat)  FW_DIR="${ROOT}/.ai.ui" ;;
 esac
+
+# ── 1b. UI block gate (marked block required in thin-client mode) ───────
+# Audit 20261015 F-04: a bare string match let a target with the UI pointer
+# but NONE of the UI contract pass. The marker pair is the contract; bare
+# strings are accepted only for the fat-client standalone artifact.
+if [[ "$UI_BLOCK_BEGIN" -gt 1 || "$UI_BLOCK_END" -gt 1 ]]; then
+  bad "UI block: DUPLICATED (${UI_BLOCK_BEGIN} BEGIN / ${UI_BLOCK_END} END markers — merge ran twice; keep exactly one pair)"
+elif [[ "$UI_BLOCK_BEGIN" -eq 1 && "$UI_BLOCK_END" -eq 1 ]]; then
+  ok "UI block: marked (exactly one UI_DESIGN_OS_BEGIN/END pair)"
+elif [[ "$UI_BLOCK_BEGIN" -eq 0 && "$UI_BLOCK_END" -eq 0 ]]; then
+  UI_SNIP=""
+  case "$MODE" in
+    thin) UI_SNIP="${SRC}/templates/cursorrules.ui.snippet.template" ;;
+    fat)  UI_SNIP="${ASSETS}/templates/cursorrules.ui.snippet.template" ;;
+  esac
+  LEGACY_UNMARKED=0
+  if grep -qE '^(## UI Design OS|# AI Agent Rules.*\(UI Design OS\))' "$RULES" 2>/dev/null; then
+    LEGACY_UNMARKED=1
+  fi
+  if [[ "$LEGACY_UNMARKED" -eq 1 && "$MODE" == "thin" ]]; then
+    bad "UI contract present but UNMARKED (pre-marker deployment) — appending would duplicate it; wrap the existing UI section in <!-- UI_DESIGN_OS_BEGIN --> / <!-- UI_DESIGN_OS_END --> manually, then re-run"
+  elif [[ "$FIX" -eq 1 && "$LEGACY_UNMARKED" -eq 0 && -n "$UI_SNIP" && -f "$UI_SNIP" ]]; then
+    { echo ""; cat "$UI_SNIP"; } >> "$RULES"
+    UI_BLOCK_BEGIN=1
+    UI_BLOCK_END=1
+    ok "UI block: marked snippet appended by --fix (idempotent — guarded by the marker pair)"
+  elif [[ "$MODE" == "thin" ]]; then
+    bad "UI block: absent — thin-client target carries the UI pointer but none of the UI contract; run verify --fix (or @ui-deploy-basic) to merge the marked snippet"
+  elif [[ "$UI_RULES_TEXT" -eq 1 ]]; then
+    ok "UI Design OS rules: present (standalone artifact, unmarked — fat-client accepted)"
+  else
+    bad "UI Design OS rules: absent (no UI_DESIGN_OS_BEGIN block, no standalone UI template markers)"
+  fi
+else
+  bad "UI block: malformed (${UI_BLOCK_BEGIN} BEGIN / ${UI_BLOCK_END} END markers — repair the pair)"
+fi
 
 # ── 3. Framework assets resolvable ────────────────────────────────────
 if [[ "$MODE" == "thin" ]]; then
@@ -163,8 +215,15 @@ else
 fi
 
 # ── 5. Sister framework paths (Frameworks registry) ──────────────────
+# The heading is a hard string dependency for x-director's authoritative path
+# resolution — a rename silently degrades it (audit 20261015 F-07a), so its
+# absence is a warning, not a note.
 if ! grep -q 'Frameworks registry' "$RULES" 2>/dev/null; then
-  note "Frameworks registry section: absent (merged-snippet rules?) — sisters resolve by on-disk auto-discovery only"
+  if grep -qE '^##+ Source pointers' "$RULES" 2>/dev/null; then
+    warn "Frameworks registry heading: renamed (a 'Source pointers' heading is present) — x-director's authoritative registry lookup degrades to on-disk auto-discovery; keep the literal string 'Frameworks registry' in the heading"
+  else
+    warn "Frameworks registry section: absent — sisters resolve by on-disk auto-discovery only (x-director path resolution degrades from authoritative to heuristic)"
+  fi
 fi
 
 # check_sister <slot-id|''> <dir-name> <token-var> — one registry row.

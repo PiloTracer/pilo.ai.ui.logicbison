@@ -3,18 +3,18 @@
 
 ## UI Design OS (`.ai.ui/`)
 
-**Coexistence:** [`.ai.ui/COHABITATION.md`](.ai.ui/COHABITATION.md) — UI skills write to `.work.ui/` only; do not overwrite `.work/plans/NEXT.md` except cross-links.
+**Coexistence:** [`$AI_UI_SOURCE/COHABITATION.md`]($AI_UI_SOURCE/COHABITATION.md) — UI skills write to `.work.ui/` only; do not overwrite `.work/plans/NEXT.md` except cross-links.
 
-**Lost on UI?** [`.ai.ui/START_HERE.md`](.ai.ui/START_HERE.md) · **Router:** `@ui-process-router - <question>`
+**Lost on UI?** [`$AI_UI_SOURCE/START_HERE.md`]($AI_UI_SOURCE/START_HERE.md) · **Router:** `@ui-process-router - <question>`
 
 ### Change safety (add to existing change-safety section or create one)
 
 | Gate | Command | Fail when |
 |------|---------|-----------|
-| Touch scope | `bash .ai.ui/scripts/touch-scope-verify.sh` | File outside `.work.ui/touch-scope` |
-| Blast radius | `bash .ai.ui/scripts/blast-radius-check.sh` | Cross-area diff ≥3 areas |
-| Tests | `bash .ai.ui/scripts/framework-verify.sh` | Non-zero exit |
-| Gate check | `bash .ai.ui/scripts/gate-verify.sh` | Done task with empty Notes |
+| Touch scope | `bash $AI_UI_SOURCE/scripts/touch-scope-verify.sh` | File outside `.work.ui/touch-scope` |
+| Blast radius | `bash $AI_UI_SOURCE/scripts/blast-radius-check.sh` | Cross-area diff ≥3 areas |
+| Tests | `bash $AI_UI_SOURCE/scripts/framework-verify.sh` | Non-zero exit |
+| Gate check | `bash $AI_UI_SOURCE/scripts/gate-verify.sh` | Done task with empty Notes |
 
 ### Data loss & destructive operations (union with Agent OS rules)
 
@@ -34,15 +34,15 @@ Close every UI task response per `.ai.ui/skills/SKILL_DEPENDENCIES.md` § Operat
 
 | File | Purpose |
 |------|---------|
-| `.ai.ui/START_HERE.md` | UI operator decision tree |
-| `.ai.ui/COHABITATION.md` | Boundary with Agent OS |
+| `$AI_UI_SOURCE/START_HERE.md` | UI operator decision tree |
+| `$AI_UI_SOURCE/COHABITATION.md` | Boundary with Agent OS |
 | `REPLACE:UI_TECH_STACK_DOC` | Front-end stack |
-| `.ai.ui/standards/REPLACE:UI_CONVENTIONS_FILE` | UI conventions |
-| `.ai.ui/standards/REPLACE:UI_SCREEN_SPEC_STANDARD_FILE` | Screen SPEC |
-| `.ai.ui/standards/REPLACE:UI_COMPONENT_STANDARD_FILE` | Components |
-| `.ai.ui/standards/REPLACE:UI_DESIGN_TOKENS_FILE` | Tokens |
-| `.ai.ui/standards/REPLACE:UI_ACCESSIBILITY_FILE` | WCAG |
-| `.ai.ui/standards/REPLACE:UI_DIRECTORY_MAP_FILE` | UI directories |
+| `$AI_UI_SOURCE/standards/REPLACE:UI_CONVENTIONS_FILE` | UI conventions |
+| `$AI_UI_SOURCE/standards/REPLACE:UI_SCREEN_SPEC_STANDARD_FILE` | Screen SPEC |
+| `$AI_UI_SOURCE/standards/REPLACE:UI_COMPONENT_STANDARD_FILE` | Components |
+| `$AI_UI_SOURCE/standards/REPLACE:UI_DESIGN_TOKENS_FILE` | Tokens |
+| `$AI_UI_SOURCE/standards/REPLACE:UI_ACCESSIBILITY_FILE` | WCAG |
+| `$AI_UI_SOURCE/standards/REPLACE:UI_DIRECTORY_MAP_FILE` | UI directories |
 | `.work.ui/context/HANDOFF_UI.md` | UI handoff |
 | `.work.ui/plans/NEXT_UI.md` | UI iteration |
 
