@@ -6,9 +6,24 @@
 
 **Open:** closed
 
-**Updated:** 2026-10-15
+**Updated:** 2026-11-05
 
-**Closed:** 2026-10-15
+**Closed:** 2026-11-05
+
+## Latest action (@ui-director)
+**Date:** 2026-11-05
+**Request:** "all approved"
+**Classified bucket:** `reference` (SPEC approval) + build handoff
+**Executed:**
+1. Approved `screens/home/20261105-SCREEN-SPEC.md` (operator "all approved") and flipped the screen map `home` row to **Approved**.
+2. Confirmed the reference binding: direction Approved, tokens applied, SPEC §13/§11 bound, `SCREEN_REFERENCE_MAP.md` updated.
+3. Traceability PASS (3/3 screens scheduled; Approved screen has a SPEC).
+**Review fixes applied (2026-11-05):** added `partial`/`permission-denied` states; §8 Button/Card/ComparisonTable/Nav = `native allowed` with semantics + APG; added Card/ComparisonTable/Nav to foundation doc 03 + CATALOG; §13 now records `referenceManifest: directions/trusted-growth.md` (Approved direction is the manifest) + `exampleIds: N/A` waiver; stale Next action replaced.
+**Waivers recorded:** §8 native-allowed rows (semantic HTML + tokens, no custom primitive required); §13 `exampleIds: N/A` because live-website references use the Approved direction as the reference manifest (no example manifest applies).
+**Blockers:** implementation cannot run in this framework repo — there is no application source (`ui-component-build` writes app paths, not `.work.ui/`). Build belongs in the adopter/thin-client repo.
+**Next recommended:** in the app repo: `@ui-design-system init` → `@ui-component-build plan - S1` → build `home`.
+
+**2026-11-05 — website-reference intake + effects/widgets capability (owner goal: "use other websites as inspiration … IT SHOULD BE ABLE TO DO IT"):** added the 19th skill `ui-reference-intake` (`scan → dna → synthesize → find → bind → audit`), `scripts/reference-scan.py` (static HTTPS/SSRF/robots guards, CSS var resolution, palette/type/space/motion evidence, two-axis classification, `list`/`audit`/self-test), guide `docs/guides/web-reference-intake.md`, templates under `templates/work.ui/inputs/references/`, verified catalog `resources/reference-sites.md` (13 scanned, Warby Parker 403 catalog-only), taxonomy `resources/reference-types.md` (site type × conversion goal; **lead-generating is a goal family**), and routing/wiring (`ui-director`, `ui-screen-spec`, `ui-design-foundation`, `ui-visual-verify`, `ui-process-router`, `START_HERE`, `APPROACH`, `README`, registries). Worked example: `.work.ui/inputs/references/directions/trusted-growth.md` (hubspot/basecamp/nerdwallet) — approved 2026-11-05, tokens applied, bound to `home` (SPEC Approved 2026-11-05). Gap closure for the owner's sufficiency question: `resources/effects-and-widgets.md` (effect tiers 0–3, LCP/INP/CLS budgets, a11y/fallback rules, modern widget matrix, commercial-safe libraries), expanded UIS-03/UIS-05, CATALOG `Behavior source`/`APG pattern`/`States`, and build/verify gates for Tier 2–3 effects + complex widgets. Evidence: scanner self-test 35/35 PASS; reference audit PASS (0/0); `framework-verify.sh` PASS (19 skills, links clean, bootstrap PASS); touch-scope PASS (94 files); blast-radius PASS (approved in touch-scope); gate-verify PASS; live scans 2026-11-05 (13/14 ok; Warby 403). Env note: container `/tmp` lacks `chgrp`, so framework-verify needs a verification-only `rsync` shim (`.work.ui/tmp/bin/rsync`, `-a`→`-rlptD`) to pass the deploy self-tests. **Owner approval:** `trusted-growth` direction approved 2026-11-05; home bound; no protected surfaces changed.
 
 **2026-10-15 — deploy reliability from the 20261015 cohabitation audit (owner-invoked @ai-director across 7 sibling repos):** `scripts/cursorrules-verify.sh` marker gate — thin mode missing/duplicate `UI_DESIGN_OS_BEGIN/END` → FAIL (exactly-one pair; fat/framework-root standalone unmarked still ok); `--fix` appends the marked snippet idempotently and refuses to append over an unmarked legacy UI contract; renamed-registry-heading escalated note→warn; `AI_UI_ROOT` env override for moved source dirs. `scripts/ui-deploy-basic.sh` **merges** an existing unmarked UI contract under BEGIN/END markers instead of skip; `force` wholesale-replace now requires the explicit token `confirm-overwrite-cursorrules` (BLOCKED + lost-content listing otherwise); `templates/cursorrules.ui.snippet.template` paths via `$AI_UI_SOURCE`; `templates/cursorrules.ui.template` wrapped in BEGIN/END markers. Skill doc (`ui-deploy-basic/skill.md`) updated: force row, token in flag-equivalence, leak-block, step 3, idempotency, checklist. Regression evidence: framework-verify PASS, `bootstrap-test.sh` PASS, functional matrix (deploy merge / delete-block→fix / force blocked+token / update idempotent) on mktemp targets + read-only pilo-mail. **Verify in-repo:** `bash scripts/framework-verify.sh` · `bash scripts/bootstrap-test.sh` · `bash scripts/cursorrules-verify.sh <target>` · deploy smoke: `bash scripts/ui-deploy-basic.sh /tmp/t --force` (expect BLOCKED exit 1). Note: `scripts/blast-radius-check.sh` carries a **pre-existing uncommitted** change (not part of this session — left dirty deliberately).
 

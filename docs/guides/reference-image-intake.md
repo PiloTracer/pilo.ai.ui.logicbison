@@ -4,6 +4,8 @@
 
 **Legal:** screenshot-to-code (MIT) — self-hosted FastAPI backend or BYOK keys; output is owned by the project. The framework requires **no installation** — this runbook is entirely adopter-environment.
 
+**Live website instead of an image?** Use [`web-reference-intake.md`](web-reference-intake.md) (`@ui-reference-intake scan - <url>`). This image runbook is for operator-owned mockups/screenshots; website intake extracts principles and never clones assets/copy.
+
 ---
 
 ## Prerequisites (user environment, not framework)

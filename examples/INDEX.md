@@ -20,6 +20,8 @@
 
 Curated links: [`resources/README.md`](../resources/README.md)
 
+**Live websites as references:** use [`@ui-reference-intake`](../skills/ui-reference-intake/skill.md) (`scan → dna → synthesize → bind`), not the static example rows. Classify references on two axes (site type × conversion goal) via [`resources/reference-types.md`](../resources/reference-types.md); catalog starting points: [`resources/reference-sites.md`](../resources/reference-sites.md).
+
 ## Example → implementation playbook
 
 Use on **every** project (any website, app, responsive UI):

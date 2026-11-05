@@ -29,6 +29,8 @@ Also update when changed: `.work.ui/plans/ASSUMPTIONS.md`, `RISK_REGISTRY.md`, `
 
 Recommend: `@ui-project-approach - <description>` · `@ui-style-stack set - <stack>` · pick **2–4 example ids** from `examples/INDEX.md`.
 
+**If the operator names live websites as inspiration:** run `@ui-reference-intake scan` → `dna` → `synthesize` **before** `greenfield`, and feed the direction's token proposal into doc 02 and its layout/component rules into doc 01/03. Do not paste site assets or copy; see [`docs/guides/web-reference-intake.md`](../../docs/guides/web-reference-intake.md).
+
 ## greenfield (craft)
 
 Set **craft tier** in doc 01; `--surface-*` in doc 02 when tier ≥ refined; doc 03 rows cite **example id** + primitive. Record ids in HANDOFF_UI. See [`SURFACE-AND-CONTROL-CRAFT`](../../standards/20260523-SURFACE-AND-CONTROL-CRAFT.md) §1–2 and [`examples/INDEX.md`](../../examples/INDEX.md) playbook.

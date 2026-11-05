@@ -27,9 +27,9 @@
 |----|-----------|-----------|
 | UIS-01 | [`visual-hierarchy/`](visual-hierarchy/README.md) | New screen, marketing block, dense dashboard |
 | UIS-02 | [`responsive-layout/`](responsive-layout/README.md) | Breakpoints, grid, overflow, mobile-first |
-| UIS-03 | [`motion-design/`](motion-design/README.md) | Animation, transitions, loading skeletons |
+| UIS-03 | [`motion-design/`](motion-design/README.md) | Animation, transitions, loading skeletons, effect tiers/performance ([matrix](../resources/effects-and-widgets.md)) |
 | UIS-04 | [`color-contrast/`](color-contrast/README.md) | New colors, themes, overlays on imagery |
-| UIS-05 | [`interaction-patterns/`](interaction-patterns/README.md) | Forms, modals, menus, multi-step flows |
+| UIS-05 | [`interaction-patterns/`](interaction-patterns/README.md) | Forms, modals, menus, complex widgets, multi-step flows ([widget matrix](../resources/effects-and-widgets.md)) |
 | UIS-06 | [`ai-visual-quality/`](ai-visual-quality/README.md) | **AI-generated UI** — spacing drift, generic chrome |
 | UIS-07 | [`surface-control-craft/`](surface-control-craft/README.md) | **Craft tier ≥ refined** — surfaces, controls, §13 compliance |
 | UIS-08 | [`intuitive-ux/`](intuitive-ux/README.md) | **All screens** — discoverability, feedback, error forgiveness, cognitive load |
@@ -47,8 +47,8 @@
 | Agent/Cursor UI session (default **AI-assisted: yes**) | [`ai-visual-quality/prompt.md`](ai-visual-quality/prompt.md) | PR, task Notes, NEXT_UI | **Required** unless **`human-only`** in same message |
 | Craft tier ≥ refined; forms/settings/dashboards | [`surface-control-craft/prompt.md`](surface-control-craft/prompt.md) | PR, verify report | **Required** at milestone |
 | New theme or semantic color token | UIS-04 | ADR or token PR | **Required** |
-| New animation beyond micro-feedback | UIS-03 | screen SPEC or PR | Recommended |
-| Multi-step flow or modal | UIS-05 | screen SPEC §6 | Recommended |
+| New animation/effect beyond micro-feedback (Tier 2–3) | UIS-03 | screen SPEC or PR | **Required** for Tier 2–3 |
+| Multi-step flow, modal, or complex widget (combobox/table/palette/date/toast/drawer) | UIS-05 | screen SPEC §6 | **Required** when hand-rolled or new behavior |
 | Any screen before ship | UIS-08 | PR, verify report, NEXT_UI | **Required** |
 | Analytical dashboard or report screen | UIS-09 | PR, verify report, NEXT_UI | **Required** (analytical dashboards) |
 | Marketing / landing page / hero section | UIS-10 | PR, verify report, NEXT_UI | **Required** (marketing-site, hybrid marketing shell) |

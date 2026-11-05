@@ -41,6 +41,19 @@ description: >-
 | BEFORE compare | `beforeScreenshot` in §13 but no visible improvement on cited rules (manual/vision) |
 
 7. **UIS-07** run when craft tier ≥ refined (`@ui-concept-run - UIS-07`)
+7b. **Reference fidelity (only when SPEC §13 cites `referenceIds`):**
+   - direction is `Approved`; its token roles exist in the token source;
+   - `extractedRules` are visible (spot-check 3);
+   - **no** copied logo/asset/font/copy; originals or licensed assets only;
+   - originality recognition test: a viewer cannot name the reference brand from the screen alone;
+   - reference-specific a11y failures were not inherited (contrast/targets/motion).
+   This is **principles reflected**, not pixel similarity. See [`ui-reference-intake`](../ui-reference-intake/skill.md) and [`web-reference-intake.md`](../../docs/guides/web-reference-intake.md).
+7c. **Effects & modern widgets (when the diff adds Tier 2–3 motion or a complex widget):**
+   - UIS-03 evidence: tier, performance budget, reduced-motion, fallback;
+   - UIS-05 evidence: behavior source + APG pattern + keyboard/focus/states;
+   - no hand-rolled combobox/dialog/data-table/command-palette without APG justification;
+   - no scroll-jacking, cursor hijacking, `transition: all`, or Tier 3 without a browser pass;
+   - matrix: [`resources/effects-and-widgets.md`](../../resources/effects-and-widgets.md).
 8. **Vision tier (opt-in):** after **explicit operator authorization** (§8.2 — state tool, route(s), actions; wait for confirmation), run `vision - <route>` against the assertion catalog in [`reference.md`](reference.md) (layout, color/contrast, state, behavior groups). Report pass/fail per assertion; honest verdicts incl. regressions introduced by a fix. Never auto-launch a browser.
 
 ## Vision tier (rendered-UI assertions)
@@ -61,6 +74,8 @@ Include section:
 - §13 exampleIds: ok | gaps
 - Native control violations: none | …
 - UIS-07: done | pending | N/A
+- Reference fidelity: N/A | pass | fail (referenceIds: …)
+- Effects/widgets: N/A | pass | fail (tiers / widgets: …)
 ```
 
 Close per the Operator handoff contract (Form A if nothing is needed; Form B with **Needs your approval:** / **Needs your answer:** / **Next step:** otherwise).

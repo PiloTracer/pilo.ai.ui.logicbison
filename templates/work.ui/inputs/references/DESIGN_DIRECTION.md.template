@@ -1,0 +1,108 @@
+# DESIGN DIRECTION — <direction-slug>
+
+**What this is:** A synthesized, brand-coherent direction derived from 2–4 website references — the bridge from reference DNA to tokens, SPECs, and implementation.
+**Status:** Draft · **Date:** YYYY-MM-DD
+**Needs:** operator approval of the thesis, token proposal, and originality guardrails; then apply tokens and `bind`.
+
+> This is not a clone. A user must not be able to name a reference brand from the resulting screen. Reference IDs in backticks must match `.work.ui/inputs/references/<slug>/`.
+
+## 1. Product & job
+
+- **Product / screen:** REPLACE (screen slug + job to be done)
+- **Audience:** REPLACE
+- **Primary action:** REPLACE
+- **Constraints:** REPLACE (stack, brand, accessibility level, performance)
+
+## 2. Reference set & weights
+
+| Reference ID | Role | Weight | Why selected | DNA confidence |
+|---|---|---|---|---|
+| `REPLACE` | primary | 60% | REPLACE | high/medium/low |
+| `REPLACE` | secondary | 30% | REPLACE | high/medium/low |
+| `REPLACE` | accent | 10% | REPLACE | high/medium/low |
+
+**Rejected references:** REPLACE (and why) — or "none".
+
+## 3. Synthesis thesis
+
+> One sentence the screen can be judged against.
+
+REPLACE e.g. "Calm editorial trust for a B2B buyer who dislikes hype: warm canvas, one accent, proof before features."
+
+## 4. Design principles
+
+1. REPLACE (3–5 principles, each a decision rule)
+2.
+3.
+
+## 5. Token proposal
+
+**Status:** proposal only — apply through the foundation/token owner; do not hardcode.
+
+| Role | OKLCH | Fallback hex | Contrast vs canvas | Source |
+|---|---|---|---|---|
+| `--color-bg` | `oklch(...)` | `#......` | n/a | synthesis |
+| `--color-surface` | `oklch(...)` | `#......` | REPLACE | synthesis |
+| `--color-text` | `oklch(...)` | `#......` | REPLACE (≥4.5:1) | synthesis |
+| `--color-text-muted` | `oklch(...)` | `#......` | REPLACE (≥4.5:1) | synthesis |
+| `--color-accent` | `oklch(...)` | `#......` | REPLACE (≥3:1 UI) | synthesis |
+| `--color-border` | `oklch(...)` | `#......` | REPLACE | synthesis |
+
+- **Type:** display REPLACE / body REPLACE / mono REPLACE; scale REPLACE; licences REPLACE.
+- **Space:** base REPLACE px; section rhythm REPLACE.
+- **Radius:** REPLACE scale.
+- **Surface/elevation:** REPLACE.
+- **Motion:** durations/easings REPLACE; reduced-motion behavior REPLACE.
+
+## 6. Layout & composition
+
+- **Hero:** REPLACE (own composition, not a copy)
+- **Section order:** REPLACE
+- **Grid/container/measure:** REPLACE
+- **Density:** REPLACE
+- **Responsive behavior:** REPLACE (breakpoints + collapse order)
+
+## 7. Component rules
+
+| Component | Rule | Reference principle (not surface) |
+|---|---|---|
+| Nav | REPLACE | REPLACE |
+| Primary CTA | REPLACE | REPLACE |
+| Cards | REPLACE | REPLACE |
+| Forms | REPLACE | REPLACE |
+| Pricing | REPLACE | REPLACE |
+| Proof | REPLACE | REPLACE |
+
+## 8. Content voice
+
+- **Voice:** REPLACE (patterns only)
+- **Headline shape:** REPLACE
+- **CTA verbs:** REPLACE
+- **Proof strategy:** REPLACE
+- **Do not reuse:** source copy, taglines, testimonials, customer names
+
+## 9. Originality guardrails
+
+- **Do not copy:** logos/wordmarks; reference palette as identity; proprietary illustrations/photos/icons/fonts; source copy; distinctive composition.
+- **Differentiating moves (≥3):** REPLACE
+- **Recognition test:** show the draft beside each reference; if a viewer names the reference brand, revise.
+- **Similarity budget:** family resemblance in principles only; no shared brand assets or copy.
+- **Legal note:** design guidance, not legal advice; counsel reviews high-risk cases.
+
+## 10. Accessibility constraints
+
+- WCAG 2.2 AA: body 4.5:1, large/UI 3:1; visible focus; 44 px targets; no motion-only meaning; reduced-motion honored.
+- **Reference failures not inherited:** REPLACE (observed low contrast, tiny targets, heavy motion).
+- **Checks:** `@ui-concept-run - UIS-04` + `@ui-accessibility-audit milestone` + token-lint.
+
+## 11. Screen application
+
+| Screen | Reference IDs | Rules to bind | Status |
+|---|---|---|---|
+| REPLACE | `REPLACE` | REPLACE | Draft |
+
+**Token apply step:** update `tokens.json` / `tokens.css` + foundation doc 02 with the proposal; run token-schema + token-lint; then `@ui-reference-intake bind - <screen>`.
+
+## Next action
+
+`@ui-reference-intake bind - <screen>` after operator approval + token application — or revise the thesis/tokens above first.

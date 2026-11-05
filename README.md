@@ -58,11 +58,13 @@ Full playbook: [`examples/INDEX.md`](examples/INDEX.md)
 | [`resources/control-platforms.md`](resources/control-platforms.md) | OSS behavior platforms (MIT/Apache) |
 | [`resources/web-research-2026.md`](resources/web-research-2026.md) | Curated external references + agent apply rules (license §, static verify, browser opt-in §8.2) |
 | [`resources/README.md`](resources/README.md) | External gallery URLs + resource index |
-| **18 `ui-*` skills** | Bootstrap → foundation → spec → build → verify (+ plan audit + deploy + session + copy + python-desktop) |
+| [`resources/reference-types.md`](resources/reference-types.md) | Two-axis reference taxonomy (site type × conversion goal) for "lead-generating"-style retrieval |
+| [`resources/effects-and-widgets.md`](resources/effects-and-widgets.md) | Effect tiers + performance/a11y budgets + modern widget matrix + commercial-safe libraries |
+| **19 `ui-*` skills** | Bootstrap → foundation → spec → build → verify (+ plan audit + deploy + session + copy + python-desktop + reference-intake) |
 
 See [`APPROACH.md` §6](APPROACH.md#6-skills-we-explicitly-did-not-add) for skills we did not add (coverage via UI-PATTERNS).
 
-**Skills (18):** [`skills/README.md`](skills/README.md) · **Operator:** [`START_HERE.md`](START_HERE.md) · **Playbook:** [`examples/INDEX.md`](examples/INDEX.md)
+**Skills (19):** [`skills/README.md`](skills/README.md) · **Operator:** [`START_HERE.md`](START_HERE.md) · **Playbook:** [`examples/INDEX.md`](examples/INDEX.md)
 
 ---
 

@@ -11,6 +11,7 @@
 | craft | surfaces, controls, quality | read + `@ui-concept-run - UIS-07` | `SURFACE-AND-CONTROL-CRAFT.md` |
 | controls | which OSS library for behavior | read | `resources/control-platforms.md` |
 | research | external UX/a11y/token/copy references, web research | read | `resources/web-research-2026.md` (§1–§6 by topic; §7 exclusions; §8 policies) |
+| reference | "make it look like <site>", website design inspiration, "lead-generating references", reference DNA | `@ui-reference-intake find - <type/goal>` or `scan - <url>` | `ui-reference-intake/skill.md` · `resources/reference-types.md` · `docs/guides/web-reference-intake.md` |
 | cohabitation | both .ai and .ai.ui | read | `COHABITATION.md` |
 | foundation | design tokens | `@ui-design-foundation greenfield` | `ui-design-foundation/skill.md` |
 | probe | "ask me until you understand the UI", vague brand/users/scope | `@ui-design-foundation probe` (foundation) · `@ui-component-build probe` (roadmap completeness) | `probe-protocol.md` |

@@ -43,6 +43,8 @@ Follow [`examples/INDEX.md`](examples/INDEX.md) playbook. **S0 primitives before
        │
        ├── "I have a UI idea (free text)"          ──► @ui-screen-spec intake - <sentence>
        │
+       ├── "Use this website as inspiration"      ──► @ui-reference-intake scan - <url>
+       │
        ├── "Build / polish UI components"         ──► §5
        │
        ├── "Check visuals / a11y before ship"     ──► §6
@@ -59,6 +61,8 @@ Follow [`examples/INDEX.md`](examples/INDEX.md) playbook. **S0 primitives before
 | UI process question | `@ui-process-router - <question>` |
 | Where is UI work? | `.work.ui/context/HANDOFF_UI.md` + `.work.ui/plans/NEXT_UI.md` |
 | Free-text UI request / don't know skill | `@ui-director - <describe what you want>` · `@x-director - <describe what you want>` (cross-framework) |
+| Website design reference / "make it look like X" | `@ui-reference-intake scan - <url>` → `dna` → `synthesize` → `bind` |
+| Find references by type/goal ("lead-generating") | `@ui-reference-intake find - lead-generation` |
 | Full repo session (Agent OS) | `@session-control status` + `.work/context/HANDOFF.md` |
 | `.work.ui`-scoped session verbs | `@ui-session start` / `status` / `context` / `add` / `commit` / `close` / `push` (any combination; `.work.ui/` only in target repos) |
 | UI iteration snapshot | `@ui-component-build status` |
@@ -103,6 +107,7 @@ ui-foundation-complete  →  screen-spec-ready  →  ui-implementation-ready
 | Review before build | `@ui-screen-spec review - <path>` |
 | UIS prompts in SPEC | List UIS-01…10 in SPEC §12 Concept registry |
 | Bind example patterns | SPEC §13: `exampleIds` + `extractedRules` from `examples/*/manifest.md` |
+| Bind website references | SPEC §13: `referenceIds` + `extractedRules` from an Approved `ui-reference-intake` direction |
 
 Screen SPECs live under **`.work.ui/screens/<slug>/`** — not `.work/features/`.
 
@@ -142,6 +147,9 @@ If no valid UI iteration block:
 | Run UI task gate (lint, type, unit/visual tests per `.cursorrules`) | UI task gate |
 | Agent-assisted UI diff → UIS-06 | `@ui-concept-run - UIS-06` |
 | Craft tier ≥ refined → UIS-07 | `@ui-concept-run - UIS-07` |
+| Tier 2–3 effects / motion change → UIS-03 | `@ui-concept-run - UIS-03` |
+| Complex widget / flow change → UIS-05 | `@ui-concept-run - UIS-05` |
+| Marketing signature moment → UIS-10 | `@ui-concept-run - UIS-10` |
 | Any screen before ship → UIS-08 | `@ui-concept-run - UIS-08` |
 | Analytical dashboard → UIS-09 | `@ui-concept-run - UIS-09` |
 | Cross-screen token change → UIS-04 | `@ui-concept-run - UIS-04` |
@@ -159,6 +167,7 @@ Full-stack tasks: also follow `@code-implementation` for non-UI files ([`COHABIT
 | Dirty UI tree | `@ui-visual-verify uncommitted` |
 | Applicable UIS rows pending | `@ui-concept-run status` |
 | Intuitive UX (all screens) | `@ui-concept-run - UIS-08` |
+| Effects/widgets quality | `@ui-concept-run - UIS-03` + `UIS-05` (see [`resources/effects-and-widgets.md`](resources/effects-and-widgets.md)) |
 | Data viz quality (analytical dashboards) | `@ui-concept-run - UIS-09` |
 | Plan/roadmap readiness (verifiers + probe coverage + orphan screens) | `@ui-plan-verify audit` |
 
@@ -184,10 +193,12 @@ Full-stack tasks: also follow `@code-implementation` for non-UI files ([`COHABIT
 ## 9. Forgetfulness check (UI)
 
 - [ ] Screen SPEC read before editing?
+- [ ] Website references bound only via Approved direction + originality/a11y check?
 - [ ] Tokens/components standards applied (no magic hex in components)?
 - [ ] UI task gate run with real exit codes?
 - [ ] UIS-06 / UIS-07 per [`ui-visual-verify`](skills/ui-visual-verify/skill.md) when applicable?
 - [ ] UIS-08 intuitive UX check before ship?
+- [ ] UIS-03 effects / UIS-05 widgets checked when changed?
 - [ ] UIS-09 data viz quality if analytical dashboard?
 - [ ] `HANDOFF_UI.md` and `NEXT_UI.md` updated?
 - [ ] Agent OS `HANDOFF.md` has UI cross-link if milestone closed?

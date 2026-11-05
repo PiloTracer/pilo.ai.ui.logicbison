@@ -6,7 +6,7 @@ Full skill registry, dependency map, and routing tables for the `@ui-director` o
 
 ## 1. Complete skill registry (all `ui-*` skills)
 
-All 18 registered skills except `ui-director` itself (15 `ui-*` + 3 `ui-deploy-*` utilities listed below). Source of truth: `skills/README.md` (**19 total** including `ui-director`).
+All registered skills except `ui-director` itself (`ui-*` workflows + two `ui-deploy-*` utilities listed below). Source of truth: `skills/README.md`.
 
 | `@` handle | Folder | Role | Modes | Writes? | Depends on |
 |------------|--------|------|-------|---------|------------|
@@ -14,7 +14,8 @@ All 18 registered skills except `ui-director` itself (15 `ui-*` + 3 `ui-deploy-*
 | `ui-project-approach` | `ui-project-approach/` | Classify archetype + complexity + skill chain | `- <description>`, `status`, `help` | Read-only (optional HANDOFF write) | — |
 | `ui-style-stack` | `ui-style-stack/` | Set/report active styling approach | `set - <stack>`, `status` | Yes (`HANDOFF_UI`) | — |
 | `ui-design-foundation` | `ui-design-foundation/` | Establish tokens, patterns, screen map, a11y baseline; certifies screen-spec-ready | `greenfield`, `probe`, `probe - status`, `probe - until ready`, `status`, `certify screen-spec-ready` | Yes (foundation docs 01–04, PROBE_LEDGER) | Recommended: `@ui-bootstrap init`, `@ui-project-approach`, `@ui-style-stack set` |
-| `ui-screen-spec` | `ui-screen-spec/` | Author/review screen SPECs | `intake - <sentence>`, `create - <slug>`, `review - <path>`, `amend - <slug>`, `status` | Yes (SPECs) | `screen-spec-ready` certified |
+| `ui-screen-spec` | `ui-screen-spec/` | Author/review screen SPECs | `intake - <sentence\|image\|URL>`, `create - <slug>`, `review - <path>`, `amend - <slug>`, `status` | Yes (SPECs) | `screen-spec-ready` certified |
+| `ui-reference-intake` | `ui-reference-intake/` | Website references → evidence → DNA → direction → SPEC; two-axis classification | `scan - <urls>`, `dna - <slugs>`, `synthesize - <slugs>`, `find - <type\|goal>`, `bind - <screen>`, `audit`, `status` | Yes (`inputs/references/`, SPEC §13) | Public HTTPS + rights basis; `bind` needs Approved direction + tokens |
 | `ui-component-build` | `ui-component-build/` | Execute UI iteration from NEXT_UI.md | `status`, `probe`, `probe - status`, `probe - until ready`, `plan - S{N}`, `start`, `continue`, `complete` | Yes (code, NEXT_UI, HANDOFF) | Approved SPECs, valid iteration block, style stack |
 | `ui-copy` | `ui-copy/` | Plan, write, review, or audit UI copy | `write - <element>`, `plan - <screen>`, `review - <path>`, `audit - <path>`, `tone - <description>`, `status` | Yes (copy deliverables) | — (gate-independent) |
 | `ui-python-desktop` | `ui-python-desktop/` | Design/scaffold/verify Python desktop UIs (FLET/PySide6/PyQt6) | `stack set - flet\|pyside6\|pyqt`, `scaffold - <slug>`, `component add - <name>`, `verify - <path>`, `status` | Yes (code, HANDOFF_UI) | screen-spec-ready + tokens (Phase 2) |
@@ -76,6 +77,8 @@ Before `@ui-component-build complete`, ensure these all pass:
 | "I use Tailwind" / "set up CSS modules" | `style` | `@ui-style-stack set - <stack>` |
 | "Create the design tokens" | `foundation` | `@ui-design-foundation greenfield` |
 | "I'm not sure about the design direction" | `foundation-probe` | `@ui-design-foundation probe` |
+| "Make it look like HubSpot" | `reference` | `@ui-reference-intake scan - https://www.hubspot.com` → `dna` → `synthesize` → `bind - <screen>` |
+| "Find lead-generating references" | `reference` | `@ui-reference-intake find - lead-generation` (both axes; not every SaaS page) |
 | "I need a login page" | `screen-request` | Check screen-spec-ready → `@ui-screen-spec create - login` or `intake` |
 | "Add a dashboard page" | `screen-request` | `@ui-screen-spec create - dashboard` |
 | "Review the spec for checkout" | `screen-spec` | `@ui-screen-spec review - .work.ui/screens/checkout/...` |
@@ -139,6 +142,7 @@ Single source: `SKILL_DEPENDENCIES.md` § Work tree path resolution (mandatory).
 | Cohabitation | `COHABITATION.md` | Rules when coexisting with Agent OS |
 | Control platforms | `resources/control-platforms.md` | OSS behavior libraries (MIT/Apache) |
 | Web research | `resources/web-research-2026.md` | Curated external URLs + agent apply rules; license + browser policies |
+| Reference design | `resources/reference-sites.md`, `resources/reference-types.md` | Verified site catalog + two-axis taxonomy; workflow in `docs/guides/web-reference-intake.md` |
 | Resource index | `resources/README.md` | Gallery URLs + pointers to research + control platforms |
 
 ---

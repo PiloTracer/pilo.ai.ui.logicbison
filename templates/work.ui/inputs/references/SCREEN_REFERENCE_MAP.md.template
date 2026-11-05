@@ -1,0 +1,19 @@
+# SCREEN REFERENCE MAP
+
+**What this is:** Which references and direction are bound to each screen SPEC.
+**Status:** Draft · **Updated:** YYYY-MM-DD
+**Needs:** keep in sync with each SPEC §13 and the direction status.
+
+| Screen slug | SPEC | Reference IDs | Direction | Bound | Date |
+|---|---|---|---|---|---|
+| REPLACE | `screens/<slug>/YYYYMMDD-SCREEN-SPEC.md` | `hubspot`, `basecamp` | `directions/trusted-growth.md` | Draft | YYYY-MM-DD |
+
+## Rules
+
+- A row is valid only when the direction is `Approved` and its token proposal has been applied.
+- SPEC §13 must contain the same `referenceIds`, `extractedRules`, `doNotCopy`, and `originalityCheck`.
+- Remove a reference from the row when its DNA is superseded — do not silently keep stale bindings.
+
+## Next action
+
+`@ui-reference-intake bind - <screen>` for the next unbound screen.

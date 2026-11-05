@@ -69,6 +69,7 @@ Close every UI task response per `.ai.ui/skills/SKILL_DEPENDENCIES.md` § Operat
 | ui-bootstrap | `.work.ui/` + cursorrules merge |
 | ui-design-foundation | Foundation 01–04; screen-spec-ready |
 | ui-screen-spec | `.work.ui/screens/` SPECs |
+| ui-reference-intake | Website references → DNA → direction → SPEC (no clone) |
 | ui-component-build | `NEXT_UI.md` iterations |
 | ui-visual-verify | Visual regression |
 | ui-accessibility-audit | WCAG |

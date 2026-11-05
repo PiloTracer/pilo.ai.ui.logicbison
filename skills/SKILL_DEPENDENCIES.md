@@ -55,6 +55,8 @@ ui-foundation-complete  →  screen-spec-ready  →  ui-implementation-ready
 | **ui-design-foundation** `certify screen-spec-ready` | **ui-foundation-complete: yes** | **Required** |
 | **ui-component-build** `probe` | None; interactive roadmap-completeness check before `ui-implementation-ready`. Ledger `{UI_PLANS_ROOT}/full/PROBE_LEDGER.md` | Recommended before broad iteration |
 | **ui-screen-spec** `intake` | None (free-text front door); classifies + routes, only writes a SPEC when class=`local` | - (records to `NEXT_UI` § Intake queue) |
+| **ui-reference-intake** `scan` / `dna` / `synthesize` / `find` | Public HTTPS page(s); operator rights basis; 2–4 references for synthesis | **Required** (robots allowed or explicit bypass note; no clone) |
+| **ui-reference-intake** `bind` | **screen-spec-ready**; existing SPEC; direction `Approved`; token proposal applied | **Required** (SPEC §13 + §11 synced) |
 | **ui-screen-spec** `create` | SCREEN_SPEC_STANDARD; **screen-spec-ready** | **Required** (warn if no) |
 | **ui-component-build** `plan` | Approved screen SPEC(s) for milestone | **Required** |
 | **ui-component-build** `start` / `continue` | Valid `NEXT_UI.md` UI iteration; screen-spec-ready or waiver in HANDOFF_UI | **Required** |
@@ -88,6 +90,8 @@ ui-foundation-complete  →  screen-spec-ready  →  ui-implementation-ready
 | `@ui-screen-spec create` | `@ui-design-foundation certify screen-spec-ready` |
 | `@ui-component-build start` | `@ui-component-build plan - S{N}` |
 | Free-text UI request, unsure where it goes | `@ui-screen-spec intake - <sentence>` |
+| "Make it look like <site>" / website design inspiration | `@ui-reference-intake scan - <url>` → `dna` → `synthesize` → `bind` |
+| "Find lead-generating / ecommerce / demo-booking references" | `@ui-reference-intake find - <type or goal>` (two-axis taxonomy) |
 | UI copy / microcopy request | `@ui-copy write - <description>` or `@ui-director - <request>` |
 | Brand/users/scope vague; "do you understand the UI?" | `@ui-design-foundation probe` (then `certify`) |
 | Roadmap completeness unclear before broad build | `@ui-component-build probe` |
@@ -112,6 +116,11 @@ One verb set across `ui-*` skills. New verbs go here first, then into the matrix
 | `greenfield` | ui-design-foundation | yes | Create foundation docs 01–04 |
 | `probe` | ui-design-foundation, ui-component-build | yes (docs + ledger) | Interrogate until coverage target; sub-modes `- status`, `- until ready` |
 | `intake` | ui-screen-spec | records only | Classify + route a free-text request |
+| `scan` | ui-reference-intake | yes (evidence) | Static website reference scan (robots-aware) |
+| `dna` | ui-reference-intake | yes (DNA) | Distill one reference into 12-section design DNA |
+| `synthesize` | ui-reference-intake | yes (direction) | Blend 2–4 DNAs into a direction + token proposal |
+| `find` | ui-reference-intake | read | Discover references by site type / conversion goal |
+| `bind` | ui-reference-intake | yes (SPEC §13) | Bind an Approved direction to a screen |
 | `create` | ui-screen-spec | yes (SPEC) | New screen SPEC (slug or derived) |
 | `review` / `amend` | ui-screen-spec | yes | Check / amend a SPEC |
 | `plan` | ui-component-build | yes (NEXT_UI) | Write a milestone iteration |

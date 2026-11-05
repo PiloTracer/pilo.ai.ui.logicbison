@@ -98,6 +98,8 @@ Browser control remains **available** for deep verification; it is never the def
 
 **Unverified alternates to consider (fetch + license-check before citing):** Paul Tol's colorblind-safe palettes (personal.sron.nl/~pault). **Excluded SaaS alternates (§7):** Percy (commercial visual QA).
 
+**Effects & modern widgets implementation matrix:** [`effects-and-widgets.md`](effects-and-widgets.md) — effect tiers 0–3, LCP/INP/CLS budgets, reduced-motion/fallback rules, widget matrix, commercial-safe libraries. Use with UIS-03/UIS-05/UIS-07/UIS-10.
+
 ## 4. Design systems & tooling → `ui-design-system`, control-platforms, CATALOG
 
 **License:** MIT (Storybook MCP, Framelink repo, Iconify, Fontsource) · Apache-2.0 (Style Dictionary v4) · W3C (Open UI, Web Components) · © link-only ⚠ (Design Better, EightShapes — unverified this run)

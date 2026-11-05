@@ -17,11 +17,14 @@
 | StatCard | composite | P0 | dashboard-home | dashboards/D1 | StatCard |
 | Tabs | primitive | P1 | settings | dashboards/D1 | Tabs |
 | RangeSlider | primitive | P1 | settings | mobile-controls/C1 | RangeSlider |
+| Card | primitive | P0 | home | reference:hubspot/basecamp | Card |
+| ComparisonTable | composite | P0 | home | reference:nerdwallet | ComparisonTable |
+| Nav | composite | P0 | home | reference:hubspot | Nav |
 
 ## Milestone fit (primitive-first)
 
 - **S0:** P0 primitives (Button, AppShell, StatCard) catalogued + Storybook before screens.
-- **S1:** `dashboard-home` composition. **S2:** `settings` (Tabs, RangeSlider).
+- **S1:** `dashboard-home` composition. **S2:** `settings` (Tabs, RangeSlider). **S3:** `home` (Card, ComparisonTable, Nav).
 
 (See `20260529-04-screen-map.md` § Milestones.)
 

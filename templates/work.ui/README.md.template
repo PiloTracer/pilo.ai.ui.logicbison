@@ -11,5 +11,6 @@ See navigation: permanent README content is in the framework demo [`.work.ui/REA
 | `plans/foundation/` | UI foundation 01–04 |
 | `screens/<slug>/` | Screen SPECs |
 | `design-system/CATALOG.md` | Primitives registry |
+| `inputs/references/` | Website reference evidence, DNA, directions, screen map (`@ui-reference-intake`) |
 
 Session bookends: `@session-control` (`.ai/`, full repo) · `@ui-session` (`.work.ui`-scoped start / status / context / add / commit / close / push).

@@ -60,7 +60,7 @@ Interactive completeness check on the UI roadmap before broad iteration. Asks th
 |-----------|-------|------|
 | **S0** (or S1-a) | Catalog **P0 primitives** from foundation doc 03 | CATALOG status `done` + Storybook |
 | **S1-b** | Screen composition from approved SPECs | §8 primitives all `done` or waived |
-| **S2** | Polish: spacing, motion (UIS-03), hierarchy (UIS-01) | UIS-07 when tier ≥ refined |
+| **S2** | Polish: spacing, motion/effects (UIS-03), widgets (UIS-05), hierarchy (UIS-01) | UIS-07 when tier ≥ refined; UIS-03/05 evidence |
 
 **Block screen tasks** when:
 
@@ -83,6 +83,9 @@ Same structure as Agent OS iteration block but in `NEXT_UI.md`:
 | No raw hex in changed components | DESIGN_TOKENS_STANDARD |
 | UIS-06 when agent-assisted | `@ui-concept-run - UIS-06` |
 | UIS-07 when craft tier ≥ refined | `@ui-concept-run - UIS-07` |
+| UIS-03 when motion/effects change (Tier 2–3) | `@ui-concept-run - UIS-03` + [`resources/effects-and-widgets.md`](../../resources/effects-and-widgets.md) |
+| UIS-05 when a complex widget/flow changes | `@ui-concept-run - UIS-05` + APG mapping |
+| UIS-10 when marketing/hybrid or a signature moment is added | `@ui-concept-run - UIS-10` |
 | SPEC §13 compliance | extractedRules reflected in diff |
 | Scope | Only declared UI paths |
 

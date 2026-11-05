@@ -1,0 +1,20 @@
+# Website references — intake registry
+
+**What this is:** Project-level record of scanned website references. Generated/maintained by `scripts/reference-scan.py`; do not hand-edit rows (edit DNA docs instead).
+**Status:** Draft · **Updated:** YYYY-MM-DD
+**Needs:** `@ui-reference-intake dna - <slug>` for rows without DNA.
+
+| Slug | Source | Fetched | Status | DNA | Notes |
+|---|---|---|---|---|---|
+| `REPLACE` | REPLACE | YYYY-MM-DD | ok | pending | static scan |
+
+## Rules
+
+- `ok` means the static scan succeeded, not that the DNA is approved or the design is original.
+- Blocked rows stay visible until resolved or removed by the operator.
+- Raw HTML/CSS lives in `.work.ui/tmp/reference-scan/` only; it is never tracked.
+- No assets, logos, fonts, or copy are licensed by being listed here.
+
+## Next action
+
+`@ui-reference-intake scan - <url>` or `@ui-reference-intake dna - <slug>`.

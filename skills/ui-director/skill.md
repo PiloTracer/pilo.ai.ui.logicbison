@@ -98,6 +98,7 @@ Read `{HANDOFF_UI}` and `{UI_ITERATION_CARRIER}` for context. Classify the reque
 | `foundation` | "establish design tokens", "create UI foundation", "vision and principles", "screen map", "design system plan" | `ui-design-foundation` |
 | `foundation-probe` | "understand my UI", "vague brand", "uncertain scope", "probe the design" | `ui-design-foundation probe` |
 | `screen-request` | "I need a page for X", "new screen for Y", "spec out Z", "add a flow" | `ui-screen-spec intake` → `create` |
+| `reference` | "make it look like <site>", "inspired by", "use this website's design", "design references", "lead-generating references", "ecommerce references" | `ui-reference-intake` (`find` / `scan` → `dna` → `synthesize` → `bind`) |
 | `screen-spec` | "review a spec", "amend spec", "check screen spec" | `ui-screen-spec review/amend` |
 | `design-system` | "init catalog", "add component to design system", "storybook", "primitives" | `ui-design-system` |
 | `build` | "build the UI", "implement screen X", "code the components", "start/continue iteration" | `ui-component-build` |
@@ -144,6 +145,8 @@ Map the classified bucket to the correct skill chain. Respect the dependency gra
 | User says | Execute |
 |-----------|---------|
 | "Start a new UI project for a SaaS product" | `@ui-project-approach - SaaS product` → `@ui-style-stack set - tailwind` → `@ui-design-foundation greenfield` |
+| "Make it feel like HubSpot and Basecamp" | `@ui-reference-intake scan - https://www.hubspot.com https://basecamp.com` → `dna` → `synthesize` → `bind - <screen>` → build |
+| "Find lead-generating references" | `@ui-reference-intake find - lead-generation` (optionally `; goal=demo-booking`) — never treat every SaaS page as lead-gen |
 | "I need a team management page" | Check if `screen-spec-ready`. If yes → `@ui-screen-spec create - team-members` → build. If no → run prerequisite first. |
 | "Build out the dashboard UI" | `@ui-component-build status` → if no active iteration → `@ui-component-build plan - S1` → `start` → `continue` |
 | "Is the UI ready to ship?" | `@ui-plan-verify audit` → check results → if gaps, route to fix → if pass, report ready |

@@ -78,9 +78,11 @@ Implementation rules live in `style-stacks/<stack>.md` — skills emit code for 
 |--------|------|
 | Annotated screenshots | [`examples/INDEX.md`](examples/INDEX.md) |
 | External galleries | [`resources/README.md`](resources/README.md) |
+| Live websites (principles, not clones) | [`skills/ui-reference-intake`](skills/ui-reference-intake/skill.md) → [runbook](docs/guides/web-reference-intake.md) |
+| Effects & modern widgets | [`resources/effects-and-widgets.md`](resources/effects-and-widgets.md) (UIS-03/UIS-05/UIS-07/UIS-10) |
 | Project brand | `.ai.ui/inputs/brand/` or adopter `inputs/` |
 
-**Rule:** Patterns from examples → SPEC §13 (`exampleIds`, `extractedRules`). See [`examples/INDEX.md`](examples/INDEX.md) playbook.
+**Rule:** Patterns from examples → SPEC §13 (`exampleIds`, `extractedRules`). See [`examples/INDEX.md`](examples/INDEX.md) playbook. Live websites go through `@ui-reference-intake` (`scan → dna → synthesize → bind`); never copy assets/copy/fonts, and never treat a scan as a licence.
 
 ---
 

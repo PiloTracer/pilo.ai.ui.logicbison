@@ -24,6 +24,7 @@ Placeholder: `{SCREEN_SPEC_ROOT}/<slug>/YYYYMMDD-SCREEN-SPEC.md`
 |------|--------|
 | `intake - <free sentence>` | Classify a free-text UI request → route to the right executor |
 | `intake - <image path\|URL>` | Reference-image scaffold (optional, Phase 4) — see runbook |
+| `intake - <website URL>` | Live-website reference → route to `@ui-reference-intake scan` (no clone) |
 | `create - <slug \| free-text>` | New SPEC from template; derives slug if given a sentence; pattern extraction below |
 | `review - <path>` | Checklist against SCREEN_SPEC_STANDARD + craft gates |
 | `amend - <slug>` | Amendment file; do not edit Approved SPEC in place |
@@ -54,6 +55,8 @@ Override: `@ui-screen-spec intake - <sentence> ; force=<class>`.
 ## intake — reference image (optional, Phase 4)
 
 `@ui-screen-spec intake - <image path|URL>` — optional fast path for mockups/redesigns: classify the request (same 4 classes), then **scaffold → re-skin → gate** per [`docs/guides/reference-image-intake.md`](../../docs/guides/reference-image-intake.md). Never auto-commits scaffolds; output is a starting point that must pass token-lint + UIS-06 before promotion to `screens/<slug>/`. Requires the operator's own self-hosted screenshot-to-code backend or BYOK keys (MIT; user environment — not a framework requirement).
+
+**Website URL (not an image):** if the argument is an `https://` page on a live site (e.g. `intake - https://www.hubspot.com`), do **not** send it to the image scaffold. Route to `@ui-reference-intake scan - <url>` (see [`docs/guides/web-reference-intake.md`](../../docs/guides/web-reference-intake.md)). Distinguish image URLs by extension/content-type (`.png/.jpg/.webp/.gif/.svg`) vs HTML pages. A website request is "extract principles", never "clone".
 
 ## create — pattern extraction
 

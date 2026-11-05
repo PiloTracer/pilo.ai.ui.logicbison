@@ -180,6 +180,7 @@ Invoke as `@<skill-id>` + mode. **Do not** reimplement these as unprefixed skill
 | ui-deploy-files | Fat-client: copy `.ai.ui/` files into target project (no-overwrite, respects `.gitignore`) |
 | ui-design-foundation | Tokens, screen map; certify screen-spec-ready |
 | ui-screen-spec | Screen SPECs under `.work.ui/screens/` |
+| ui-reference-intake | Website design references: scan → DNA → synthesize → bind; two-axis classification; originality/licence gates |
 | ui-component-build | UI iteration from `NEXT_UI.md` |
 | ui-visual-verify | Visual / token regression |
 | ui-accessibility-audit | WCAG audits |

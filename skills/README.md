@@ -32,6 +32,7 @@ Portable, tool-agnostic UI workflows. Each skill is a folder with `skill.md` (+ 
 | ui-session | `ui-session/` | Session carrier (session-control parity): start / status / context / add / commit / close / push, any combination — target repos: strictly `.work.ui/` (commit includes untracked files/dirs; `scoped` = bookends only; secrets scan; script-enforced scope guard); framework source repo: whole tree |
 | ui-design-foundation | `ui-design-foundation/` | Tokens, patterns, screen map; certifies **screen-spec-ready** |
 | ui-screen-spec | `ui-screen-spec/` | Author/review screen SPECs |
+| ui-reference-intake | `ui-reference-intake/` | Website design references: static scan → DNA → synthesize → bind; two-axis classification (site type × conversion goal), originality/licence/a11y gates; `find` for "lead-generating"-style queries |
 | ui-component-build | `ui-component-build/` | UI iteration from `NEXT_UI.md` |
 | ui-visual-verify | `ui-visual-verify/` | Visual/token regression audits |
 | ui-accessibility-audit | `ui-accessibility-audit/` | WCAG-oriented checks |

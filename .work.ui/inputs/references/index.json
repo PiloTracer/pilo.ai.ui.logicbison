@@ -1,0 +1,382 @@
+{
+  "schema": "ui-reference-index/1.0",
+  "updated_at": "2026-11-05T21:10:57+00:00",
+  "references": [
+    {
+      "slug": "basecamp",
+      "requested_url": "https://basecamp.com/",
+      "final_url": "https://basecamp.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:08:15+00:00",
+      "title": "Basecamp",
+      "http_status": 200,
+      "palette_size": 29,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "saas-product",
+        "types": [
+          "saas-product"
+        ],
+        "conversion_goal": "free-trial",
+        "secondary_goals": [
+          "newsletter"
+        ],
+        "funnel_stage": "decision",
+        "confidence": "medium",
+        "reasons": [
+          "saas-product: SaaS CTA/product language: "
+        ]
+      }
+    },
+    {
+      "slug": "calendly",
+      "requested_url": "https://calendly.com/",
+      "final_url": "https://calendly.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:08:17+00:00",
+      "title": "Meeting Scheduling Software and AI Meeting Tools | Calendly",
+      "http_status": 200,
+      "palette_size": 61,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "scheduling-booking",
+        "types": [
+          "scheduling-booking",
+          "saas-product",
+          "lead-generation"
+        ],
+        "conversion_goal": "free-trial",
+        "secondary_goals": [
+          "demo-booking",
+          "contact-quote"
+        ],
+        "funnel_stage": "decision",
+        "confidence": "medium",
+        "reasons": [
+          "lead-generation: sales CTA: talk to sales",
+          "saas-product: SaaS CTA/product language: pricing, software",
+          "scheduling-booking: scheduling language: meeting scheduling, scheduling software"
+        ]
+      }
+    },
+    {
+      "slug": "charitywater",
+      "requested_url": "https://www.charitywater.org/",
+      "final_url": "https://www.charitywater.org/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:08:30+00:00",
+      "title": "charity: water | Help Bring Clean and Safe Water to Communities",
+      "http_status": 200,
+      "palette_size": 55,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "nonprofit-donation",
+        "types": [
+          "nonprofit-donation"
+        ],
+        "conversion_goal": "donation",
+        "secondary_goals": [],
+        "funnel_stage": "decision",
+        "confidence": "medium",
+        "reasons": [
+          "nonprofit-donation: giving language: donation, give today, nonprofit",
+          "nonprofit-donation: sponsor/fundraise"
+        ]
+      }
+    },
+    {
+      "slug": "databox",
+      "requested_url": "https://databox.com/",
+      "final_url": "https://databox.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:08:02+00:00",
+      "title": "Agentic Analytics Platform for Agencies and Teams | Databox",
+      "http_status": 200,
+      "palette_size": 60,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "dashboard-app",
+        "types": [
+          "dashboard-app",
+          "saas-product"
+        ],
+        "conversion_goal": "free-trial",
+        "secondary_goals": [
+          "newsletter"
+        ],
+        "funnel_stage": "decision",
+        "confidence": "medium",
+        "reasons": [
+          "saas-product: SaaS CTA/product language: try it free, platform",
+          "content-seo: content language: insights",
+          "dashboard-app: app language: dashboard, analytics platform"
+        ]
+      }
+    },
+    {
+      "slug": "ellevest",
+      "requested_url": "https://www.ellevest.com/",
+      "final_url": "https://www.ellevest.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:08:21+00:00",
+      "title": "Wealth management and financial planning | Ellevest",
+      "http_status": 200,
+      "palette_size": 70,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "forms-surveys",
+        "types": [
+          "forms-surveys",
+          "finance"
+        ],
+        "conversion_goal": "contact-quote",
+        "secondary_goals": [
+          "lead-magnet"
+        ],
+        "funnel_stage": "decision",
+        "confidence": "medium",
+        "reasons": [
+          "content-seo: content language: news, guide, insights",
+          "forms-surveys: forms language: quiz",
+          "finance: finance identity: wealth, financial"
+        ]
+      }
+    },
+    {
+      "slug": "hubspot",
+      "requested_url": "https://www.hubspot.com/",
+      "final_url": "https://www.hubspot.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:10:24+00:00",
+      "title": "HubSpot | Software & Tools for your Business - Homepage",
+      "http_status": 200,
+      "palette_size": 60,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "saas-product",
+        "types": [
+          "saas-product",
+          "lead-generation"
+        ],
+        "conversion_goal": "free-trial",
+        "secondary_goals": [
+          "demo-booking"
+        ],
+        "funnel_stage": "decision",
+        "confidence": "medium",
+        "reasons": [
+          "lead-generation: sales CTA: get a demo",
+          "lead-generation: form on a sales-CTA page",
+          "saas-product: SaaS CTA/product language: get started free, platform, software",
+          "saas-product: platform + product"
+        ]
+      }
+    },
+    {
+      "slug": "leadpages",
+      "requested_url": "https://leadpages.com/",
+      "final_url": "https://leadpages.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:08:27+00:00",
+      "title": "The AI Landing Page Builder | Leadpages",
+      "http_status": 200,
+      "palette_size": 25,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "saas-product",
+        "types": [
+          "saas-product"
+        ],
+        "conversion_goal": "free-trial",
+        "secondary_goals": [
+          "demo-booking"
+        ],
+        "funnel_stage": "decision",
+        "confidence": "high",
+        "reasons": [
+          "saas-product: SaaS CTA/product language: platform",
+          "saas-product: JSON-LD SoftwareApplication",
+          "saas-product: platform + product",
+          "content-seo: 5 <article> elements",
+          "comparison-marketplace: many nav groups + article cards"
+        ]
+      }
+    },
+    {
+      "slug": "mailchimp",
+      "requested_url": "https://mailchimp.com/",
+      "final_url": "https://mailchimp.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:08:43+00:00",
+      "title": "Email & SMS Marketing Platform | Mailchimp",
+      "http_status": 200,
+      "palette_size": 44,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "saas-product",
+        "types": [
+          "saas-product"
+        ],
+        "conversion_goal": "free-trial",
+        "secondary_goals": [],
+        "funnel_stage": "decision",
+        "confidence": "medium",
+        "reasons": [
+          "saas-product: SaaS CTA/product language: pricing, platform",
+          "saas-product: pricing + signup/free-trial"
+        ]
+      }
+    },
+    {
+      "slug": "monday",
+      "requested_url": "https://monday.com/",
+      "final_url": "https://monday.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:08:25+00:00",
+      "title": "The AI Workspace for People & Agents | monday.com",
+      "http_status": 200,
+      "palette_size": 62,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "dashboard-app",
+        "types": [
+          "dashboard-app",
+          "saas-product"
+        ],
+        "conversion_goal": "signup",
+        "secondary_goals": [],
+        "funnel_stage": "decision",
+        "confidence": "medium",
+        "reasons": [
+          "saas-product: JSON-LD SoftwareApplication",
+          "content-seo: content language: insights",
+          "dashboard-app: app language: workspace"
+        ]
+      }
+    },
+    {
+      "slug": "nerdwallet",
+      "requested_url": "https://www.nerdwallet.com/",
+      "final_url": "https://www.nerdwallet.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:08:22+00:00",
+      "title": "NerdWallet: Finance smarter",
+      "http_status": 200,
+      "palette_size": 61,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "comparison-marketplace",
+        "types": [
+          "comparison-marketplace",
+          "finance",
+          "content-seo"
+        ],
+        "conversion_goal": "affiliate-referral",
+        "secondary_goals": [],
+        "funnel_stage": "decision",
+        "confidence": "medium",
+        "reasons": [
+          "content-seo: 21 <article> elements",
+          "content-seo: content language: news",
+          "comparison-marketplace: comparison language: rates, find the right",
+          "comparison-marketplace: many nav groups + article cards",
+          "finance: finance identity: financial"
+        ]
+      }
+    },
+    {
+      "slug": "semrush",
+      "requested_url": "https://www.semrush.com/",
+      "final_url": "https://www.semrush.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:08:37+00:00",
+      "title": "Semrush: Your Unfair Advantage for Growing Brand Visibility",
+      "http_status": 200,
+      "palette_size": 48,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "saas-product",
+        "types": [
+          "saas-product",
+          "lead-generation",
+          "content-seo"
+        ],
+        "conversion_goal": "free-trial",
+        "secondary_goals": [
+          "demo-booking"
+        ],
+        "funnel_stage": "decision",
+        "confidence": "medium",
+        "reasons": [
+          "lead-generation: sales CTA: book a demo",
+          "lead-generation: form on a sales-CTA page",
+          "saas-product: SaaS CTA/product language: try for free, start for free, platform",
+          "saas-product: platform + product",
+          "content-seo: 10 <article> elements",
+          "content-seo: content language: insights"
+        ]
+      }
+    },
+    {
+      "slug": "typeform",
+      "requested_url": "https://www.typeform.com/",
+      "final_url": "https://www.typeform.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:08:19+00:00",
+      "title": "Form Builder with AI Automation | Typeform",
+      "http_status": 200,
+      "palette_size": 60,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "forms-surveys",
+        "types": [
+          "forms-surveys",
+          "saas-product",
+          "lead-generation"
+        ],
+        "conversion_goal": "free-trial",
+        "secondary_goals": [
+          "demo-booking"
+        ],
+        "funnel_stage": "decision",
+        "confidence": "medium",
+        "reasons": [
+          "lead-generation: sales CTA: contact sales",
+          "saas-product: SaaS CTA/product language: start free",
+          "content-seo: content language: blog, insights",
+          "forms-surveys: forms language: form builder",
+          "forms-surveys: form builder"
+        ]
+      }
+    },
+    {
+      "slug": "userpilot",
+      "requested_url": "https://userpilot.com/",
+      "final_url": "https://userpilot.com/",
+      "status": "ok",
+      "fetched_at": "2026-11-05T21:07:59+00:00",
+      "title": "Product Growth Platform | Userpilot",
+      "http_status": 200,
+      "palette_size": 48,
+      "classification": {
+        "taxonomy_version": "2026-11-05",
+        "primary_type": "saas-product",
+        "types": [
+          "saas-product",
+          "lead-generation"
+        ],
+        "conversion_goal": "demo-booking",
+        "secondary_goals": [],
+        "funnel_stage": "decision",
+        "confidence": "high",
+        "reasons": [
+          "lead-generation: sales CTA: get a demo",
+          "saas-product: SaaS CTA/product language: platform, software",
+          "saas-product: JSON-LD SoftwareApplication",
+          "saas-product: platform + product",
+          "content-seo: content language: insights"
+        ]
+      }
+    }
+  ]
+}

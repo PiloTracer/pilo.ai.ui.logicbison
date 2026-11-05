@@ -22,6 +22,16 @@ Curated (provenance: `appdesign/concept.mobiledesign.txt`):
 - https://developer.android.com/design/ui/mobile
 - https://blog.tubikstudio.com/mobile-ui-design-15-basic-types-of-screens/
 
+## Live website references (principles, not clones)
+
+- [`reference-types.md`](reference-types.md) — two-axis taxonomy: site type × conversion goal (multi-label); use it to answer "find lead-generating references".
+- [`reference-sites.md`](reference-sites.md) — 14 verified starting points (SaaS, lead-gen, scheduling, forms, fintech, nonprofit, commerce) with learn/avoid notes.
+- Intake workflow: [`docs/guides/web-reference-intake.md`](../docs/guides/web-reference-intake.md) · skill: [`skills/ui-reference-intake`](../skills/ui-reference-intake/skill.md).
+
+## Effects & modern widgets
+
+[`effects-and-widgets.md`](effects-and-widgets.md) — effect tiers, performance/a11y budgets, modern widget matrix (dialog, command palette, combobox, data table, date picker, toast, drawer, carousel, dropzone, rich text), commercial-safe libraries, and Tier 3 signature-moment rules.
+
 ## Local screenshots
 
 Prefer annotated [`examples/INDEX.md`](../examples/INDEX.md) over hotlinking gallery sites in implementation tasks.

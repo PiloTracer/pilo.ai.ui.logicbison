@@ -1,0 +1,139 @@
+# REFERENCE DNA — <slug>
+
+**What this is:** Distilled design mechanics from one public website, used as inspiration for an original design.
+**Status:** Draft · **Date:** YYYY-MM-DD
+**Needs:** operator review (approve or reject) before this DNA can feed an Approved direction.
+**Rights basis:** operator confirmed public-page analysis only; no assets/logos/copy/fonts are licensed for reuse — YYYY-MM-DD.
+**Confidence:** high | medium | low — <one-line reason>
+
+> Source URL, fetch date, scan method, and limits are mandatory in §1. Tag every claim `measured` / `estimated` / `assumption`. Do not paste page copy, testimonials, logos, or asset URLs.
+
+## 1. Source & provenance
+
+| Field | Value |
+|---|---|
+| Reference ID | `<slug>` |
+| URL | REPLACE:URL |
+| Fetched | YYYY-MM-DD · static HTML/CSS · no JS · no browser |
+| Evidence | `evidence.json` (sha/HTTP status) |
+| Robots | allowed / disallowed + reason |
+| Rights basis | REPLACE:exact operator confirmation, date |
+| Scan limits | REPLACE:what was not observed (JS-rendered sections, hover, responsive, etc.) |
+
+## 2. Identity & positioning
+
+- **Primary site type:** REPLACE (`lead-generation` | `saas-product` | `ecommerce` | `content-seo` | `comparison-marketplace` | `nonprofit-donation` | `scheduling-booking` | `forms-surveys` | `community-membership` | `portfolio-agency` | `dashboard-app` | `education` | `finance` | `media-publisher` | `marketplace` | `other`)
+- **All types (multi-label):** REPLACE
+- **Conversion goal:** REPLACE (`demo-booking` | `free-trial` | `signup` | `purchase` | `donation` | `booking` | `newsletter` | `lead-magnet` | `contact-quote` | `application` | `affiliate-referral` | `hybrid` | `unknown`)
+- **Secondary goals:** REPLACE
+- **Funnel stage:** REPLACE (`awareness` | `consideration` | `decision` | `retention` | `unknown`)
+- **Classification confidence:** REPLACE + evidence/reason
+- **Audience & job:** REPLACE (estimated/assumption if not stated on page)
+- **Promise / positioning:** REPLACE (paraphrase; no taglines)
+- **Proof style:** logos / stats / testimonials / ratings / case studies / none
+- **Voice:** REPLACE (patterns, not copied text)
+
+## 3. Layout & information architecture
+
+- **Nav model:** REPLACE
+- **Hero type:** REPLACE (centered, split, product UI, editorial, comparison)
+- **Section order:** REPLACE
+- **Grid / container / measure:** REPLACE (measured or estimated)
+- **Density:** REPLACE (dense/comfortable/airy + evidence)
+
+## 4. Color
+
+**Measured palette (top roles):**
+
+| Role | Value (OKLCH/hex) | Evidence | Notes |
+|---|---|---|---|
+| Canvas | REPLACE | measured | |
+| Ink | REPLACE | measured | |
+| Accent | REPLACE | measured | |
+| Neutral/border | REPLACE | measured | |
+
+- **Named tokens:** REPLACE (e.g. `--color-ink`, `--color-accent`) with values
+- **Dark mode:** observed / not observed
+- **Contrast risks observed:** REPLACE (do not inherit)
+
+## 5. Typography
+
+| Field | Value |
+|---|---|
+| Display family | REPLACE + licence status |
+| Body family | REPLACE + licence status |
+| Mono/utility | REPLACE or none |
+| Scale | REPLACE (body/display ratio, sizes) |
+| Weights | REPLACE |
+| Case/tracking | REPLACE |
+| Measure / line-height | REPLACE |
+
+## 6. Space, shape & surface
+
+- **Spacing base / rhythm:** REPLACE + `measured` tag
+- **Section padding:** REPLACE
+- **Radii scale:** REPLACE
+- **Borders:** REPLACE
+- **Shadows/elevation:** REPLACE
+- **Background treatment:** REPLACE (flat, gradient, texture, grid)
+
+## 7. Components & patterns
+
+| Pattern | Observed behavior | Transfer? |
+|---|---|---|
+| Navigation | REPLACE | yes/no |
+| Primary CTA | REPLACE | yes/no |
+| Cards | REPLACE | yes/no |
+| Forms | REPLACE | yes/no |
+| Pricing | REPLACE | yes/no |
+| Proof/testimonials | REPLACE | yes/no |
+| Footer | REPLACE | yes/no |
+
+## 8. Motion & interaction
+
+- **Measured transitions/animations:** REPLACE (durations, properties)
+- **Unobserved:** hover, focus, scroll, page transitions (state clearly)
+- **Transfer candidates:** REPLACE (or "none — keep minimal")
+
+## 9. Imagery & iconography
+
+- **Mix:** photography / illustration / 3D / product UI / abstract
+- **Aspect & treatment:** REPLACE
+- **Icon style:** REPLACE
+- **Do not reuse:** logos, illustrations, photos, icon sets, or their recognizable compositions
+
+## 10. Copy & content patterns
+
+- **Headline shapes:** REPLACE (pattern, not text)
+- **CTA verbs:** REPLACE
+- **Proof types:** REPLACE
+- **Reading level/voice:** REPLACE
+- **No verbatim reuse:** paraphrase only; short labels ≤10 words are observations, not copy
+
+## 11. Transfer rules
+
+### Adopt
+- REPLACE (3–7 mechanisms worth transferring)
+
+### Adapt
+- REPLACE (what must change for this product's brand/audience)
+
+### Avoid
+- REPLACE (clone markers, low-contrast styles, heavy motion, proprietary assets)
+
+### Originality constraints
+- Own palette, hero composition, imagery, copy, and component shape.
+- Recognition test: a user must not name the reference brand from the new screen.
+- Minimum 3 differentiating moves: REPLACE
+
+## 12. Evidence & confidence
+
+| Claim | Tag | Evidence / gap |
+|---|---|---|
+| REPLACE | measured/estimated/assumption | REPLACE |
+
+**What would raise confidence:** operator screenshot · authorized browser capture · responsive states · design-system page.
+
+## Next action
+
+`@ui-reference-intake synthesize - <slug> <slug>` — or, if DNA is incomplete, resolve the gaps above first.

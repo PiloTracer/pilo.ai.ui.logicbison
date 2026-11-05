@@ -61,7 +61,7 @@ for dir in foundation full; do
   fi
 done
 
-mkdir -p "${WORK_UI}/screens" "${WORK_UI}/design-system"
+mkdir -p "${WORK_UI}/screens" "${WORK_UI}/design-system" "${WORK_UI}/inputs/references"
 
 copy_if_missing "${AI_UI_ROOT}/templates/DOCS_UI_STACK.md.template" "${REPO_ROOT}/DOCS_UI_STACK.md"
 

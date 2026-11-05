@@ -1,5 +1,20 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- **`ui-reference-intake` skill (19th) — live website design references without cloning.** New workflow: `scan → dna → synthesize → bind → verify`. Static-first scan of public HTTPS pages into `.work.ui/inputs/references/` (evidence + 12-section DNA + direction + screen map); robots-aware, SSRF-guarded, no browser/JS/assets; originality, licence, font, and accessibility gates; `bind` writes SPEC §13/§11. Supported by `scripts/reference-scan.py` (`scan` / `list` / `audit` / `--self-test`), `docs/guides/web-reference-intake.md`, four `.work.ui` templates, and 14 verified catalog entries.
+- **Two-axis reference taxonomy (site type × conversion goal, multi-label).** `REFERENCE_TYPES` + `CONVERSION_GOALS` in the scanner and [`resources/reference-types.md`](resources/reference-types.md): `lead-generation`, `saas-product`, `ecommerce`, `content-seo`, `comparison-marketplace`, `nonprofit-donation`, `scheduling-booking`, `forms-surveys`, `community-membership`, `portfolio-agency`, `dashboard-app`, `education`, `finance`, `media-publisher`, `marketplace`, `other` × `demo-booking`, `free-trial`, `signup`, `purchase`, `donation`, `booking`, `newsletter`, `lead-magnet`, `contact-quote`, `application`, `affiliate-referral`, `hybrid`, `unknown`. `find` / `list --type|--goal` answers "find lead-generating references" without collapsing genres.
+- **`resources/reference-sites.md`** — verified starting catalog (userpilot, databox, hubspot, basecamp, calendly, typeform, ellevest, nerdwallet, monday, leadpages, charity: water, semrush, mailchimp; warbyparker blocked 403) tagged by type/goal with learn/avoid notes.
+- **Templates** — `REFERENCE_DNA.md`, `DESIGN_DIRECTION.md`, `REFERENCES.md`, `SCREEN_REFERENCE_MAP.md`; bootstrap creates `inputs/references/`.
+- **Effects & modern widgets layer** — `resources/effects-and-widgets.md`: effect tiers (0–3), performance budgets (LCP/INP/CLS), a11y/fallback rules, effect catalog, modern widget matrix (dialog, command palette, combobox, data table, date picker, toast, drawer, carousel, dropzone, rich text, tree, virtual list), commercial-safe libraries and licenses. UIS-03/UIS-05 expanded into substantive procedures; `ui-design-system` CATALOG gains `Behavior source` / `APG pattern` / `States`; `ui-component-build` and `ui-visual-verify` gate Tier 2–3 effects and complex widgets.
+
+### Changed
+
+- **Routing** — `ui-director` `reference` bucket; `ui-screen-spec intake - <website URL>` routes to reference intake; `ui-design-foundation` consumes an Approved direction before greenfield; `ui-visual-verify` adds optional reference-fidelity check; `ui-process-router` `reference` row; `START_HERE` / `APPROACH` / `resources` / `README` updated (19 skills).
+- **Taxonomy is model, not prose** — scanner evidence and registry carry `primary_type`, `types`, `conversion_goal`, `secondary_goals`, `funnel_stage`, `confidence`, `reasons`; `audit` validates them.
+
 ## [0.6.1] - 2026-08-19
 
 ### Removed

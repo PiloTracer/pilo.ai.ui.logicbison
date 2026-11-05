@@ -15,6 +15,7 @@ Examples for `intake` and `create`. The skill's Modes table is canonical; this f
 | `@ui-screen-spec intake - make the app feel more premium` | underspecified | `@ui-design-foundation probe` |
 | `@ui-screen-spec intake - start the UI for our new invoicing product` | brownfield | `@ui-design-foundation greenfield` |
 | `@ui-screen-spec intake - add a checkout page ; force=local` | local (forced) | `create - checkout` |
+| `@ui-screen-spec intake - https://www.hubspot.com` | local (reference) | `@ui-reference-intake scan - https://www.hubspot.com` |
 
 ### Wrong prompts (and the fix)
 
