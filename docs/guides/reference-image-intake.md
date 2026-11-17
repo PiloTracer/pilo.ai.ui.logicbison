@@ -19,7 +19,7 @@
 2. **Scaffold** — submit the image to the screenshot-to-code backend → receive HTML/Tailwind/React scaffold → place under `.work.ui/tmp/` (gitignored scratch).
 3. **Re-skin (mandatory gates before promotion):**
    - Map every color to tokens — `token-lint` must pass (no raw hex outside the token file).
-   - `UIS-06` visual-quality pass (no generic chrome; spacing/alignment audit).
+   - `UIS-06` visual-quality pass against [`resources/ai-ui-quality.md`](../../resources/ai-ui-quality.md) (reject catalog + `scripts/ai-chrome-lint.sh`; spacing/alignment still reviewed).
    - `UIS-04` contrast check on new color pairs.
    - `UIS-02` responsive check at the SPEC's breakpoints.
 4. **Promote** — only when all gates pass, move to `screens/<slug>/YYYYMMDD-SCREEN-SPEC.md` + scaffold; otherwise return to step 3 or reject with honest gaps.

@@ -10,6 +10,7 @@
 
 | Item | Artifact |
 |------|----------|
+| 2026-11-17 — director routes generic UI through the quality contract | concept bucket + reference + 28-phrase routing self-test; `ui-ship-check` runs `ai-chrome-lint` when paths are set; HANDOFF conflict markers removed |
 | 2026-11-17 — generation-time AI UI quality | `resources/ai-ui-quality.md`; `scripts/ai-chrome-lint.sh`; UIS-06 scores the reject catalog; SPEC §4 visual decision; build/verify gates; demo `home` decision filled |
 | 2026-11-05 — website-reference intake capability (19th skill) | `skills/ui-reference-intake/`, `scripts/reference-scan.py`, `docs/guides/web-reference-intake.md`, `resources/reference-types.md`, `resources/reference-sites.md`, templates; 13 live scans + Draft DNA; `trusted-growth` direction (Draft); scanner self-test 35/35, audit PASS, framework-verify PASS, touch-scope PASS, blast-radius PASS, gate-verify PASS |
 | 2026-11-05 — effects & modern widgets layer | `resources/effects-and-widgets.md`; UIS-03/UIS-05 expanded; CATALOG `Behavior source`/`APG pattern`/`States`; `ui-component-build` + `ui-visual-verify` gates for Tier 2–3 effects and complex widgets |
@@ -43,7 +44,7 @@
 
 | Priority | Item | Notes |
 |----------|------|-------|
-| **0** | `@ui-design-foundation greenfield` | Creates foundation docs 01–04 under `.work.ui/plans/foundation/` |
+| **0** | In the application repo: `@ui-component-build plan - S1` for `home` | Visual decision is filled; run `ai-chrome-lint` on the first diff. This framework repo has no app source. |
 | **1** | `@ui-design-foundation certify screen-spec-ready` | After foundation gates |
 | **2** | `@ui-design-system init` | Catalog from foundation doc 03 |
 | **3** | `@ui-screen-spec create - <slug>` | Per screen in screen map |

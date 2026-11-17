@@ -30,7 +30,8 @@
     "*.css",
     "*.yml",
     "*.yaml",
-    "*.html"
+    "*.html",
+    "*.tsv"
   ],
   "rules": [
     "Only touch files under allowed_paths",

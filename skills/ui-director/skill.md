@@ -120,7 +120,7 @@ Read `{HANDOFF_UI}` and `{UI_ITERATION_CARRIER}` for context. Classify the reque
 | `verify-visual` | "check visuals", "visual regression", "token audit", "craft compliance" | `ui-visual-verify` |
 | `verify-a11y` | "accessibility check", "WCAG audit", "a11y" | `ui-accessibility-audit` |
 | `copy` | "write UI copy", "microcopy", "button labels", "error messages", "empty states", "copy review", "copy audit", "set UI voice" | `ui-copy` |
-| `concept` | "run UIS prompt", "check visual hierarchy", "motion design", "intuitive UX", "data viz quality", "surface craft" | `ui-concept-run` |
+| `concept` | "run UIS prompt", "check visual hierarchy", "motion design", "intuitive UX", "data viz quality", "surface craft", "looks generic", "AI-generated", "generic chrome", "default AI look" | `resources/ai-ui-quality.md` → `bash scripts/ai-chrome-lint.sh` → `@ui-concept-run - UIS-06` when the ask is generic chrome; otherwise `@ui-concept-run` |
 | `audit` | "audit everything", "run verifiers", "check readiness", "traceability" | `ui-plan-verify` |
 | `ship` | "pre-ship", "ui ship check", "before we merge UI", "run all UI verifiers", "quality gate" | `bash scripts/ui-ship-check.sh` → `@ui-plan-verify audit` → milestone visual/a11y if building |
 | `lifecycle` | "where did we leave off", "track UI progress", "debug UI workflow", "golden path", "how does UI development work" | Read `HANDOFF_UI` + [`development-lifecycle.md`](../../docs/guides/development-lifecycle.md) + route gap via `@ui-plan-verify audit` |

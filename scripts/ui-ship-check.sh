@@ -76,6 +76,7 @@ fi
 
 if [[ -n "${UI_LINT_PATHS:-}" ]]; then
   run "token-lint (UI_LINT_PATHS)" bash "${ROOT}/scripts/token-lint.sh"
+  run "ai-chrome-lint (UI_LINT_PATHS)" bash "${ROOT}/scripts/ai-chrome-lint.sh"
 fi
 
 # 4 — Copy consistency (optional when screens exist)

@@ -64,6 +64,7 @@ Before `@ui-component-build complete`, ensure these all pass:
 | Data viz quality (if analytical dashboard) | `@ui-concept-run - UIS-09` | Analytical dashboards |
 | Creative direction (if marketing/landing) | `@ui-concept-run - UIS-10` | Marketing-site, hybrid |
 | Token contract (no raw hex) | `bash scripts/token-lint.sh` | All builds |
+| AI chrome literals (gradient, glow, Inter, stock phrases) | `bash scripts/ai-chrome-lint.sh` | All builds with component paths; layout classes stay in UIS-06 |
 
 ---
 
@@ -94,7 +95,8 @@ Before `@ui-component-build complete`, ensure these all pass:
 | "Audit all UI text" | `copy` | `@ui-copy audit - .work.ui/screens/` |
 | "Set the UI voice" | `copy` | `@ui-copy tone - <description>` |
 | "Plan copy needs for the dashboard" | `copy` | `@ui-copy plan - dashboard` |
-| "Run UIS-06" | `concept` | `@ui-concept-run - UIS-06` |
+| "Run UIS-06" | `concept` | `@ui-concept-run - UIS-06` (loads `resources/ai-ui-quality.md`) |
+| "This UI looks generic" / "it looks AI-generated" | `concept` | `resources/ai-ui-quality.md` → `bash scripts/ai-chrome-lint.sh` → `@ui-concept-run - UIS-06` → revise fails |
 | "Check if we're ready to close the milestone" | `audit` | `@ui-plan-verify audit` |
 | "Pre-ship check" / "before we merge UI" | `ship` | `bash scripts/ui-ship-check.sh` → `@ui-plan-verify audit` |
 | "Is the UI ready to ship?" | `ship` | Same as pre-ship |
@@ -133,6 +135,7 @@ Single source: `SKILL_DEPENDENCIES.md` § Work tree path resolution (mandatory).
 | `scripts/readiness-verify.sh` | PROBE_LEDGER honesty check (evidence, coverage math, gate-blocking unknowns) | `@ui-plan-verify audit` |
 | `scripts/traceability-verify.sh` | Screen→SPEC→milestone chain check (orphans, unbacked claims) | `@ui-plan-verify audit` |
 | `scripts/token-lint.sh` | Machine-enforce no raw hex/color in component source | `@ui-visual-verify milestone` |
+| `scripts/ai-chrome-lint.sh` | Machine-enforce no default AI chrome literals (gradient, glow, Inter, stock phrases) | `@ui-visual-verify milestone`, `@ui-component-build` task gate, `ui-ship-check` when `UI_LINT_PATHS` is set |
 | `scripts/cursorrules-ui.sh` | Install/merge UI rules into .cursorrules | `@ui-bootstrap` |
 | `scripts/release.sh` | Release preflight (runs all verifiers, checks CHANGELOG, tags) | Manual |
 
@@ -153,6 +156,7 @@ Single source: `SKILL_DEPENDENCIES.md` § Work tree path resolution (mandatory).
 | Control platforms | `resources/control-platforms.md` | OSS behavior libraries (MIT/Apache) |
 | Web research | `resources/web-research-2026.md` | Curated external URLs + agent apply rules; license + browser policies |
 | Reference design | `resources/reference-sites.md`, `resources/reference-types.md` | Verified site catalog + two-axis taxonomy; workflow in `docs/guides/web-reference-intake.md` |
+| AI UI quality | `resources/ai-ui-quality.md` | Reject catalog loaded before generation; UIS-06 scores it; `scripts/ai-chrome-lint.sh` checks the literal half |
 | Resource index | `resources/README.md` | Gallery URLs + pointers to research + control platforms |
 
 ---

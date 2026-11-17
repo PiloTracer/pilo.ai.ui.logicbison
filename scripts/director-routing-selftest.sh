@@ -50,6 +50,7 @@ map_bucket() {
     *"visual"*|*"regression"*) echo "verify-visual" ;;
     *"accessibility"*|*"wcag"*|*"a11y"*) echo "verify-a11y" ;;
     *"error message"*|*"microcopy"*|*"button label"*|*"copy"*) echo "copy" ;;
+    *"looks generic"*|*"ai-generated"*|*"ai generated"*|*"generic chrome"*|*"ai chrome"*|*"default ai look"*) echo "concept" ;;
     *"uis-"*|*"visual hierarchy"*) echo "concept" ;;
     *"audit everything"*|*"readiness"*|*"traceability"*|*"close the milestone"*|*"ready to close"*) echo "audit" ;;
     *"pre-ship"*|*"ship check"*|*"before we merge"*|*"before merge ui"*|*"quality gate"*|*"ready to ship"*) echo "ship" ;;

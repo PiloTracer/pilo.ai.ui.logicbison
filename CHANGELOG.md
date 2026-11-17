@@ -4,6 +4,8 @@
 
 ### Added
 
+- **Director and ship check call the quality contract.** "Looks generic" / "AI-generated" classify as `concept` and run the reject catalog plus `ai-chrome-lint` before UIS-06. `ui-ship-check` runs that lint whenever `UI_LINT_PATHS` is set. Golden phrases cover both requests.
+
 - **Generation-time AI UI quality contract.** [`resources/ai-ui-quality.md`](resources/ai-ui-quality.md) is the reject catalog agents load before writing a screen (purple-gradient heroes, glow shadows, hardcoded Inter, identical card rows, stock marketing lines, and the rest of the default AI look). UIS-06 scores every class and cannot recommend `ship` on a fail. `scripts/ai-chrome-lint.sh` machine-checks the literal half (gradient, glow, Inter, stock phrases) with `ai-chrome-ignore` waivers and a `--self-test`. Wired into screen SPEC §4 visual decision, `@ui-component-build` (read before generate; task gate), `@ui-visual-verify` check 2b, `@ui-concept-run`, director/router, and `START_HERE`.
 
 - **`ui-reference-intake` skill (19th) — live website design references without cloning.** New workflow: `scan → dna → synthesize → bind → verify`. Static-first scan of public HTTPS pages into `.work.ui/inputs/references/` (evidence + 12-section DNA + direction + screen map); robots-aware, SSRF-guarded, no browser/JS/assets; originality, licence, font, and accessibility gates; `bind` writes SPEC §13/§11. Supported by `scripts/reference-scan.py` (`scan` / `list` / `audit` / `--self-test`), `docs/guides/web-reference-intake.md`, four `.work.ui` templates, and 14 verified catalog entries.

@@ -8,9 +8,20 @@
 
 **Updated:** 2026-11-17
 
-**Closed:** 2026-11-17 (lifecycle waves 1–2 committed; prior 2026-11-05 reference-intake session preserved below)
+**Closed:** 2026-11-17
 
 ## Latest action (@ui-director)
+**Date:** 2026-11-17
+**Request:** "Check the status of this project, is all good and stable and reliable? make sure all the improvements were implemented. make sure ui-director will properly handle the new features/skills. Verify this project will produce better-quality UI/UIX. present non-technical summary."
+**Classified bucket:** `audit` then `concept` (routing gap)
+**Executed:**
+1. Confirmed the quality contract is committed (`0f2560f`) and present in spec, build, verify, UIS-06, and the home screen decision.
+2. Closed a routing gap: "looks generic" / "AI-generated" now classify as `concept` in `ui-director` skill, reference, and the 28-phrase routing self-test. `ui-ship-check` runs `ai-chrome-lint` when `UI_LINT_PATHS` is set.
+3. Re-ran `framework-verify` PASS, `ui-ship-check --quick` PASS, chrome-lint self-test PASS, director-routing 28/28.
+**Blockers:** none. No rendered app in this repo, so pixel quality is not measured here.
+**Next recommended:** in the application repo, `@ui-component-build plan - S1` for `home`.
+
+## Prior action (@ui-director)
 **Date:** 2026-11-17
 **Request:** "Load the context, understand this project, and propose/generate a plan to improve the quality of "ai.ui" (aka "pilo.ai.ui.logicbison") Agent OS Framework for User Interface work through agentic code assistants. Analyze the purpose of this repo and take it to the next level. Generate a plan and Apply all the recommended fixes to take this to the next level, in order to get higher quality User Interfaces through AI."
 **Classified bucket:** `concept` + `verify-visual` + `screen-spec` (framework quality, not a product screen)
@@ -147,12 +158,10 @@ Backlog 1 + 3–10 cleared in the follow-up session; only the commit (#2) remain
 
 | Date | Session | Artifacts |
 |------|---------|-----------|
-<<<<<<< HEAD
+| 2026-11-17 | director routes generic UI through the quality contract | `ui-director` concept signals + reference rows; routing self-test 28 phrases; `ui-ship-check` runs `ai-chrome-lint` when `UI_LINT_PATHS` is set; conflict markers removed from this table |
+| 2026-11-17 | lifecycle waves 1–2 | `ui-ship-check`, routing selftest (26 phrases), brand/copy/vision/skill-size verifiers; `GOLDEN_PATHS` + `development-lifecycle`; eval baselines; runnable token demo; `@ui-director` `ship`/`lifecycle` buckets; `framework-verify` PASS |
 | 2026-08-19 | ui-deploy-repo removed (consistency) | deleted `skills/ui-deploy-repo/` + `scripts/ui-deploy-repo.sh`; swept registries (`skills/README.md`, `SKILL_DEPENDENCIES.md`, `ui-director`, `ui-deploy-files`), verifiers (`framework-verify.sh`, `cursorrules-verify.sh`, `ui-deploy-files.sh`), `templates/cursorrules.ui.template`, `.quick/deploy-to-project.md`; CHANGELOG [Unreleased]; gates PASS |
 | 2026-08-19 | frameworks registry + six-slot sister discovery (v0.6.1) | `.cursorrules` registry (Layer 1); `templates/cursorrules.ui.template` 7 rows + family-aware resolution; `scripts/sister-discovery.sh` (vendored); `ui-deploy-basic` six-slot deploy-time fill; `cursorrules-verify.sh` six-slot + degraded-warn + `--fix` pinning; `framework-verify.sh` self-tests; `ui-copy`/`ui-deploy-files` stale refs fixed; `docs/homogenization/ui.md` (incl. by-design: child never resolves parent orchestrator); `framework-verify` PASS |
-=======
-| 2026-11-17 | lifecycle waves 1–2 | `ui-ship-check`, routing selftest (26 phrases), brand/copy/vision/skill-size verifiers; `GOLDEN_PATHS` + `development-lifecycle`; eval baselines; runnable token demo; `@ui-director` `ship`/`lifecycle` buckets; `framework-verify` PASS |
->>>>>>> 013670c (feat: lifecycle tooling — ship-check, golden paths, director ship/lifecycle)
 | 2026-07-31 | improvement-plan audit corrections | Post-commit audit of Phases 0–8: `APPROACH` desktop-app chain; `ui-design-system` desktop primitives; `DESIGN_TOKENS_STANDARD` §7 desktop binding; `framework-verify` desktop py_compile×3 + `scripts/fixtures/python-desktop/`; `bootstrap-test` brand template; demo reports (`completion-audit`, `vision-verify-demo`, `ui-eval-demo.json`); 18/18 director routing; `framework-verify` PASS |
 | 2026-07-31 | web-research integration + skill debloat + director routing | `resources/web-research-2026.md` (catalog + license/browser/URL policies); wired `ui-design-foundation`, `ui-accessibility-audit`, `ui-visual-verify`, `ui-design-system`, `ui-copy`, `ui-component-build`, `ui-process-router`, `ui-director`; CHANGELOG [Unreleased]; `.work.ui/reports/20260731-web-research-integration-report.md`; verified 17/17 director routing, `framework-verify` PASS |
 | 2026-06-23 | director free-text intake | `skills/ui-director/skill.md` gained explicit Free-text intake contract (capture → load → classify → channel → record); `.cursorrules`, `START_HERE.md`, `PROCESS_ROUTER.md`, `context/README.md` now route free-text requests to `@ui-director` / `@x-director` |

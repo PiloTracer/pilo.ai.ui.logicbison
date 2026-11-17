@@ -14,6 +14,8 @@ Run the visual regression checks	verify-visual
 Run a WCAG accessibility check	verify-a11y
 Write the error message for the form	copy
 Run UIS-06 on this diff	concept
+This UI looks generic	concept
+The screen looks AI-generated	concept
 Check if we're ready to close the milestone	audit
 Pre-ship check before we merge UI	ship
 UI ship check all verifiers	ship
