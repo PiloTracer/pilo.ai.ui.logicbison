@@ -99,6 +99,7 @@ If task lists backend files → user runs `@code-implementation` for those files
 
 ## complete protocol
 
+0. Recommended: `bash .ai.ui/scripts/ui-ship-check.sh` (or `scripts/ui-ship-check.sh` when framework is git root) — catches verifier + routing drift before skill gates.
 1. `@ui-visual-verify milestone` (includes craft checklist)
 2. `@ui-accessibility-audit milestone`
 3. `@ui-plan-verify audit` — runs `readiness-verify` + `traceability-verify`; an orphan screen or dishonest probe ledger blocks `complete` (a milestone must not close while the roadmap it drew from is inconsistent).

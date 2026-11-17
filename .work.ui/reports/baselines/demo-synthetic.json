@@ -1,0 +1,7 @@
+{
+  "histogram": [3, 5, 2],
+  "expected_text": ["Save", "Primary action"],
+  "width": 400,
+  "height": 300,
+  "note": "Framework demo baseline for ui-eval --baseline-compare demo-synthetic"
+}

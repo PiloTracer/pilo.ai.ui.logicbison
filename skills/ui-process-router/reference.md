@@ -25,3 +25,6 @@
 | session | close day (full repo) | `@session-control close` | `.ai/START_HERE.md` §5 |
 | session (`.work.ui`-scoped) | start / status / context / add / commit / close / push `.work.ui` session state | `@ui-session start` / `status` / `context` / `add` / `commit` / `close` / `push` (any combination) | `ui-session/skill.md` |
 | learn | reading order | read | `START_HERE.md` §8 |
+| golden | recipe for saas/marketing/desktop | read | `docs/adoption/GOLDEN_PATHS.md` |
+| lifecycle | track/debug UI workflow, where we left off | read `HANDOFF_UI` + `docs/guides/development-lifecycle.md` | `@ui-plan-verify audit` |
+| ship | pre-ship, before merge UI, ui ship check | `bash scripts/ui-ship-check.sh` | `ui-ship-check.sh` |

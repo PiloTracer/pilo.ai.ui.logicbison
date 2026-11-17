@@ -33,6 +33,7 @@
 | `START_HERE.md` decision tree shape | `.ai.ui/START_HERE.md` | UI verbs only |
 | `PROCESS_ROUTER.md` read-only router | `ui-process-router` | Route to `ui-*` or defer to `.ai` |
 | `framework-verify.sh` | `scripts/framework-verify.sh` | Different required paths |
+| Operator entry (START_HERE) | [`GOLDEN_PATHS.md`](GOLDEN_PATHS.md) + [`development-lifecycle.md`](../guides/development-lifecycle.md) | Recipe chains + create/track/debug/ship map alongside Agent OS session flow |
 | Pointer READMEs (`plans/`, `features/`) | `plans/`, `screens/`, `context/` pointers | Point to `.work.ui/` |
 
 ---

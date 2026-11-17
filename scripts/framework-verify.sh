@@ -30,7 +30,12 @@ for p in \
   scripts/ui-session.sh \
   scripts/token-lint.sh scripts/bootstrap-test.sh \
   scripts/token-schema-verify.sh scripts/ui-eval.sh \
-  docs/adoption/FROM_AGENT_OS.md \
+  scripts/ui-ship-check.sh scripts/director-routing-selftest.sh \
+  scripts/brand-catalog-verify.sh scripts/copy-label-scan.sh \
+  scripts/skill-size-check.sh scripts/vision-checklist-verify.sh \
+  docs/adoption/FROM_AGENT_OS.md docs/adoption/GOLDEN_PATHS.md \
+  docs/guides/development-lifecycle.md docs/guides/vision-dry-run-ci.md \
+  examples/runnable/token-demo/README.md examples/runnable/token-demo/index.html \
   style-stacks/README.md examples/INDEX.md resources/control-platforms.md \
   standards/20260523-SURFACE-AND-CONTROL-CRAFT.md \
   standards/20260523-UI-PATTERNS.md \
@@ -394,6 +399,15 @@ selftest "ui-session scope-guard self-test" 0 "${ROOT}/scripts/ui-session.sh" "-
 # change-safety self-tests: touch-scope, blast-radius, gate-verify must not silently rot.
 selftest "touch-scope-verify self-test"   0 "${ROOT}/scripts/touch-scope-verify.sh" "--self-test"
 selftest "blast-radius-check self-test"   0 "${ROOT}/scripts/blast-radius-check.sh" "--self-test"
+selftest "director-routing selftest"       0 "${ROOT}/scripts/director-routing-selftest.sh"
+selftest "brand-catalog-verify"            0 "${ROOT}/scripts/brand-catalog-verify.sh"
+"${ROOT}/scripts/skill-size-check.sh" >/dev/null && echo "ok: skill-size-check" || { echo "SKILL-SIZE: warn"; }
+selftest "vision-checklist-verify"         0 "${ROOT}/scripts/vision-checklist-verify.sh"
+if [[ -f "${ROOT}/.work.ui/reports/baselines/demo-synthetic.json" ]]; then
+  echo "ok: eval baseline demo-synthetic present"
+else
+  echo "EVAL: missing demo baseline"; FAIL=1
+fi
 
 # gate-verify: create NEXT_UI.md with done tasks — one with notes (pass), one without (fail).
 cat > "${tmpd}/NEXT_UI.md.with-notes" <<'EOF'

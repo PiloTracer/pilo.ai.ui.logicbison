@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>UI Design OS — token demo</title>
+  <link rel="stylesheet" href="../../../.work.ui/design-system/tokens.css" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--surface-base, #f6f7f9);
+      color: var(--color-text-primary, #1a1d21);
+      margin: 0;
+      padding: var(--space-6, 24px);
+    }
+    .card {
+      background: var(--surface-elevated, #fff);
+      border: 1px solid var(--color-border, #d8dce1);
+      border-radius: var(--radius-md, 10px);
+      padding: var(--space-6, 24px);
+      max-width: 32rem;
+      box-shadow: var(--elevation-1, 0 1px 3px #1018281a);
+    }
+    .btn {
+      background: var(--color-accent, #2f6df6);
+      color: var(--color-accent-text, #fff);
+      border: none;
+      border-radius: var(--radius-sm, 6px);
+      padding: var(--space-2, 8px) var(--space-4, 16px);
+      font-size: var(--font-size-200, 1rem);
+      cursor: pointer;
+    }
+    .muted { color: var(--color-text-secondary, #5b6470); font-size: var(--font-size-100, 0.875rem); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Token demo</h1>
+    <p class="muted">Semantic tokens only — no raw hex in component styles.</p>
+    <p><button type="button" class="btn">Primary action</button></p>
+  </div>
+</body>
+</html>

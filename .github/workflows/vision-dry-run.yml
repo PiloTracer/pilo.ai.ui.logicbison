@@ -1,0 +1,16 @@
+name: vision-dry-run (static)
+
+on:
+  schedule:
+    - cron: "23 2 * * 1" # weekly
+  workflow_dispatch:
+
+jobs:
+  vision-static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Vision checklist (no browser)
+        run: bash scripts/vision-checklist-verify.sh
+      - name: Framework gate
+        run: bash scripts/framework-verify.sh

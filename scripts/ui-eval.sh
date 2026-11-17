@@ -4,9 +4,13 @@
 # screenshot capture is the adopter's CI environment (Playwright), NOT a
 # framework requirement. NOT CLIP/semantic similarity.
 # Usage:
-#   ui-eval.sh --self-test                      # validate metric math (exit 0)
-#   ui-eval.sh --json A.json B.json             # compare two histogram descriptors
+#   ui-eval.sh --self-test
+#   ui-eval.sh --json <candidate.json> <reference.json>
+#   ui-eval.sh --baseline-save <name> <descriptor.json>
+#   ui-eval.sh --baseline-compare <name> <candidate.json>
 set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 case "${1:-}" in
   --self-test)
@@ -23,19 +27,28 @@ def hist_dist(a, b):
     return 0.5 * sum((x - y) ** 2 / (x + y + 1e-9) for x, y in zip(na, nb))
 
 ok = True
-# identical histograms -> distance 0
 if hist_dist([1, 2, 3], [1, 2, 3]) > 1e-9:
     print("SELFTEST FAIL: identical histograms should match"); ok = False
-# disjoint histograms -> high distance
 if hist_dist([10, 0], [0, 10]) < 0.5:
     print("SELFTEST FAIL: disjoint histograms should differ"); ok = False
-# different lengths -> 1.0
 if hist_dist([1], [1, 2]) != 1.0:
     print("SELFTEST FAIL: length mismatch should be 1.0"); ok = False
 print("ok: ui-eval metric core (histogram distance) self-test")
 sys.exit(0 if ok else 1)
 PY
     ;;
+  --baseline-save)
+  NAME="$2"; SRC="$3"
+  mkdir -p "${ROOT}/.work.ui/reports/baselines"
+  cp "$SRC" "${ROOT}/.work.ui/reports/baselines/${NAME}.json"
+  echo "ok: baseline saved → .work.ui/reports/baselines/${NAME}.json"
+  ;;
+  --baseline-compare)
+  NAME="$2"; CAND="$3"
+  BASE="${ROOT}/.work.ui/reports/baselines/${NAME}.json"
+  [[ -f "$BASE" ]] || { echo "FAIL: no baseline ${BASE}" >&2; exit 1; }
+  exec "$0" --json "$CAND" "$BASE"
+  ;;
   --json)
     python3 - "$2" "$3" <<'PY'
 import json, sys
@@ -78,9 +91,7 @@ sys.exit(0)
 PY
     ;;
   *)
-    echo "usage: ui-eval.sh --self-test | --json <candidate.json> <reference.json>" >&2
-    echo "Note: screenshot capture is the adopter's CI environment (Playwright);" >&2
-    echo "the framework itself requires no installation." >&2
+    echo "usage: ui-eval.sh --self-test | --json A B | --baseline-save <name> <json> | --baseline-compare <name> <cand>" >&2
     exit 2
     ;;
 esac

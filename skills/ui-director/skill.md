@@ -3,7 +3,8 @@ name: ui-director
 description: >-
   Orchestration skill that receives free-text UI requests, determines the
   optimal skill chain from available ui-* skills, executes the workflow,
-  or flags when a new skill must be created. The user does not need to
+  or flags when a new skill must be created. Uses ship-check, golden paths,
+  and lifecycle guides for track/debug/ship. The user does not need to
   know individual skills — just describe what they want.
 ---
 
@@ -26,7 +27,7 @@ description: >-
 | Mode | Action |
 |------|--------|
 | `- <free-text request>` | Parse intent, classify, route to the correct skill chain, execute |
-| `status` | Report current UI state: bootstrap, foundation, screen map, active iteration, pending verifications |
+| `status` | Report current UI state: bootstrap, foundation, screen map, active iteration, pending verifications; if milestone active, recommend `bash scripts/ui-ship-check.sh` before ship |
 | `help` | Display this skill's purpose, available skills summary, and invocation examples |
 
 ## Free-text intake contract
@@ -82,6 +83,19 @@ When routing to foundation, verify, a11y, copy, or design-system skills, agents 
 
 **Skill → research § map:** foundation §1 · a11y §2 · visual-verify §3+§6 · design-system §4 · copy §5 · behavior OSS [`control-platforms.md`](../../resources/control-platforms.md).
 
+**Operator guides (load when routing onboarding, ship, or debug):** [`docs/adoption/GOLDEN_PATHS.md`](../../docs/adoption/GOLDEN_PATHS.md) · [`docs/guides/development-lifecycle.md`](../../docs/guides/development-lifecycle.md).
+
+**Automated gates (run or recommend; report real exit codes):**
+
+| When | Command |
+|------|---------|
+| Pre-ship / "ready to merge UI" | `bash scripts/ui-ship-check.sh` (adopter: `.ai.ui/scripts/…`) |
+| Full audit after ship-check | `@ui-plan-verify audit` |
+| Routing regression (after editing director) | `bash scripts/director-routing-selftest.sh` |
+| Vision tier static dry-run | `bash scripts/vision-checklist-verify.sh` |
+| Eval vs saved baseline (advisory) | `bash scripts/ui-eval.sh --baseline-compare <name> <cand.json>` |
+| Runnable token preview | open `examples/runnable/token-demo/index.html` |
+
 ## Orchestration protocol
 
 When user says `@ui-director - <anything>`:
@@ -108,7 +122,9 @@ Read `{HANDOFF_UI}` and `{UI_ITERATION_CARRIER}` for context. Classify the reque
 | `copy` | "write UI copy", "microcopy", "button labels", "error messages", "empty states", "copy review", "copy audit", "set UI voice" | `ui-copy` |
 | `concept` | "run UIS prompt", "check visual hierarchy", "motion design", "intuitive UX", "data viz quality", "surface craft" | `ui-concept-run` |
 | `audit` | "audit everything", "run verifiers", "check readiness", "traceability" | `ui-plan-verify` |
-| `deploy` | "deploy framework to another project", "copy to repo", "thin-client bootstrap", "lightweight setup (skills load from source)" | `ui-deploy-basic` (thin client) / `ui-deploy-files` |
+| `ship` | "pre-ship", "ui ship check", "before we merge UI", "run all UI verifiers", "quality gate" | `bash scripts/ui-ship-check.sh` → `@ui-plan-verify audit` → milestone visual/a11y if building |
+| `lifecycle` | "where did we leave off", "track UI progress", "debug UI workflow", "golden path", "how does UI development work" | Read `HANDOFF_UI` + [`development-lifecycle.md`](../../docs/guides/development-lifecycle.md) + route gap via `@ui-plan-verify audit` |
+| `deploy` | "deploy framework to another project", "copy to repo", "thin-client bootstrap", "lightweight setup (skills load from source)" | `ui-deploy-basic` (thin client) / `ui-deploy-files` / `ui-deploy-repo` |
 | `session` | "commit .work.ui changes", "close UI session", "push .work.ui", "save my UI work", "open UI session", "stage my UI work" | `ui-session` (session carrier: start / status / context / add / commit / close / push; any combination; target repos: `.work.ui/` only) |
 | `desktop` | "desktop app", "native window", "PyQt", "FLET", "Qt app", "python GUI" | `ui-python-desktop stack set - <flet\|pyside6\|pyqt>` → `scaffold` |
 | `router` | "how do I...?", "where is...?", "what skill...?" | `ui-process-router` |
@@ -149,7 +165,10 @@ Map the classified bucket to the correct skill chain. Respect the dependency gra
 | "Find lead-generating references" | `@ui-reference-intake find - lead-generation` (optionally `; goal=demo-booking`) — never treat every SaaS page as lead-gen |
 | "I need a team management page" | Check if `screen-spec-ready`. If yes → `@ui-screen-spec create - team-members` → build. If no → run prerequisite first. |
 | "Build out the dashboard UI" | `@ui-component-build status` → if no active iteration → `@ui-component-build plan - S1` → `start` → `continue` |
-| "Is the UI ready to ship?" | `@ui-plan-verify audit` → check results → if gaps, route to fix → if pass, report ready |
+| "Is the UI ready to ship?" | `bash scripts/ui-ship-check.sh` → `@ui-plan-verify audit` → if pass, `@ui-visual-verify milestone` + `@ui-accessibility-audit milestone` as needed |
+| "Where did we leave off on UI?" | Read `HANDOFF_UI` + `NEXT_UI` → [`development-lifecycle.md`](../../docs/guides/development-lifecycle.md) |
+| "Start a SaaS UI from scratch" | [`GOLDEN_PATHS.md`](../../docs/adoption/GOLDEN_PATHS.md) Path 1 → execute chain |
+| "Pre-ship check" / "before merge UI" | `bash scripts/ui-ship-check.sh` → route failures per lifecycle guide |
 | "Check the visuals before we commit" | `@ui-visual-verify uncommitted` → `@ui-accessibility-audit milestone` → `@ui-concept-run - UIS-06` (if agent-assisted) |
 | "Write the error message for the login form" | `@ui-copy write - error for login` |
 | "Review the copy on the settings screen" | `@ui-copy review - .work.ui/screens/settings/...` |
@@ -191,7 +210,7 @@ If the user request genuinely cannot be fulfilled by any registered `ui-*` skill
 
 - `.ai.ui/` framework present with valid `skills/README.md` registry
 - `{HANDOFF_UI}` readable (may be empty/bootstrap state)
-- Verifier scripts at `scripts/framework-verify.sh`, `scripts/readiness-verify.sh`, `scripts/traceability-verify.sh`, `scripts/token-lint.sh`
+- Verifier scripts at `scripts/framework-verify.sh`, `scripts/ui-ship-check.sh`, `scripts/readiness-verify.sh`, `scripts/traceability-verify.sh`, `scripts/token-lint.sh`
 
 ## Completion checklist
 
@@ -204,6 +223,7 @@ If the user request genuinely cannot be fulfilled by any registered `ui-*` skill
 | 5 | `{HANDOFF_UI}` updated with action summary |
 | 6 | `{UI_ITERATION_CARRIER}` § Recommended next updated if applicable |
 | 7 | New skill registered properly (if created) |
+| 8 | Pre-ship requests run `ui-ship-check` (or document why skipped) before claiming ready |
 
 ## See also
 
@@ -216,4 +236,6 @@ If the user request genuinely cannot be fulfilled by any registered `ui-*` skill
 - [`probe-protocol.md`](../probe-protocol.md) — Shared probe engine
 - [`COHABITATION.md`](../../COHABITATION.md) — Agent OS coexistence rules
 - [`concepts/README.md`](../../concepts/README.md) — UIS prompt trigger table
+- [`docs/adoption/GOLDEN_PATHS.md`](../../docs/adoption/GOLDEN_PATHS.md) — Archetype recipe chains
+- [`docs/guides/development-lifecycle.md`](../../docs/guides/development-lifecycle.md) — Create · track · debug · ship
 - [`resources/web-research-2026.md`](../../resources/web-research-2026.md) — Curated external resources + license/browser policies (§8.1–§8.2)

@@ -1,0 +1,28 @@
+# phrase	expected_bucket
+Set up UI for the first time	bootstrap
+What kind of SaaS product is this?	approach
+I use Tailwind for styling	style
+Create the design tokens	foundation
+I'm not sure about the design direction	foundation-probe
+I need a login page	screen-request
+Review the spec for checkout	screen-spec
+Init the component catalog	design-system
+Are we ready to start building?	build-probe
+Build the login screen	build
+Continue building the dashboard	build
+Run the visual regression checks	verify-visual
+Run a WCAG accessibility check	verify-a11y
+Write the error message for the form	copy
+Run UIS-06 on this diff	concept
+Check if we're ready to close the milestone	audit
+Pre-ship check before we merge UI	ship
+UI ship check all verifiers	ship
+Where did we leave off on UI	lifecycle
+What is the golden path for SaaS	lifecycle
+Debug the UI development workflow	lifecycle
+Deploy UI Design OS to my other project	deploy
+Thin-client deploy just cursorrules	deploy
+Build a Python desktop app	desktop
+How do I create a screen spec?	router
+Commit my changes	session-control
+Create a database migration	backend

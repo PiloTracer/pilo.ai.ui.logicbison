@@ -96,6 +96,10 @@ Before `@ui-component-build complete`, ensure these all pass:
 | "Plan copy needs for the dashboard" | `copy` | `@ui-copy plan - dashboard` |
 | "Run UIS-06" | `concept` | `@ui-concept-run - UIS-06` |
 | "Check if we're ready to close the milestone" | `audit` | `@ui-plan-verify audit` |
+| "Pre-ship check" / "before we merge UI" | `ship` | `bash scripts/ui-ship-check.sh` → `@ui-plan-verify audit` |
+| "Is the UI ready to ship?" | `ship` | Same as pre-ship |
+| "Where did we leave off?" / "debug UI process" | `lifecycle` | `HANDOFF_UI` + `development-lifecycle.md` → `@ui-plan-verify audit` |
+| "Which golden path for SaaS?" | `lifecycle` | [`GOLDEN_PATHS.md`](../../docs/adoption/GOLDEN_PATHS.md) Path 1 |
 | "How do I create a screen spec?" | `router` | `@ui-process-router - how do I create a screen spec?` |
 | "Deploy to /path/to/project" | `deploy` | `@ui-deploy-files copy - /path/to/project` |
 | "Thin-client deploy (just cursorrules + .work.ui/)" | `deploy` | `@ui-deploy-basic - /path/to/project` |
@@ -119,6 +123,12 @@ Single source: `SKILL_DEPENDENCIES.md` § Work tree path resolution (mandatory).
 
 | Script | Purpose | Called by |
 |--------|---------|-----------|
+| `scripts/ui-ship-check.sh` | Unified pre-ship: framework + gate + readiness/traceability when present + token-schema + copy-label-scan | `@ui-component-build complete`, adopters |
+| `scripts/director-routing-selftest.sh` | Golden phrases → director buckets (routing drift) | `framework-verify`, after editing `ui-director` |
+| `scripts/brand-catalog-verify.sh` | Brand template 9-section + design-system wire | `framework-verify` |
+| `scripts/copy-label-scan.sh` | Cross-screen action-label consistency (WCAG 3.2.4 heuristic) | `ui-ship-check`, `@ui-copy audit` |
+| `scripts/skill-size-check.sh` | Skill.md line budget (warn; catalogs → reference.md) | `framework-verify` |
+| `scripts/vision-checklist-verify.sh` | Vision catalog static dry-run (no browser) | `framework-verify`, CI |
 | `scripts/framework-verify.sh` | Self-test: skill count, registration, link scan | `@ui-plan-verify audit`, release |
 | `scripts/readiness-verify.sh` | PROBE_LEDGER honesty check (evidence, coverage math, gate-blocking unknowns) | `@ui-plan-verify audit` |
 | `scripts/traceability-verify.sh` | Screen→SPEC→milestone chain check (orphans, unbacked claims) | `@ui-plan-verify audit` |

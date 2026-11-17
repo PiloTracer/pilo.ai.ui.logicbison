@@ -170,6 +170,7 @@ Full-stack tasks: also follow `@code-implementation` for non-UI files ([`COHABIT
 | Effects/widgets quality | `@ui-concept-run - UIS-03` + `UIS-05` (see [`resources/effects-and-widgets.md`](resources/effects-and-widgets.md)) |
 | Data viz quality (analytical dashboards) | `@ui-concept-run - UIS-09` |
 | Plan/roadmap readiness (verifiers + probe coverage + orphan screens) | `@ui-plan-verify audit` |
+| **Unified pre-ship (all UI verifiers)** | `bash scripts/ui-ship-check.sh` (adopter: `bash .ai.ui/scripts/ui-ship-check.sh`) |
 
 **Verify policy:** Static checks first (token-lint, jest-axe, rubrics in [`resources/web-research-2026.md`](resources/web-research-2026.md)). Browser control (Playwright MCP, Lighthouse, screenshots) is **opt-in** — requires explicit operator authorization per doc §8.2.
 
@@ -186,6 +187,8 @@ Full-stack tasks: also follow `@code-implementation` for non-UI files ([`COHABIT
 | 5 | [`skills/README.md`](skills/README.md) | `ui-*` registry |
 | 6 | [`concepts/README.md`](concepts/README.md) | UIS trigger table |
 | 7 | [`resources/web-research-2026.md`](resources/web-research-2026.md) | Curated external references + verify policies |
+| 7b | [`docs/adoption/GOLDEN_PATHS.md`](docs/adoption/GOLDEN_PATHS.md) | Recipe chains by archetype |
+| 7c | [`docs/guides/development-lifecycle.md`](docs/guides/development-lifecycle.md) | Create → track → debug → ship |
 | 8 | The `ui-*/skill.md` you invoke | Verbs and gates |
 
 ---

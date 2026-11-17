@@ -96,6 +96,7 @@ ui-foundation-complete  →  screen-spec-ready  →  ui-implementation-ready
 | Brand/users/scope vague; "do you understand the UI?" | `@ui-design-foundation probe` (then `certify`) |
 | Roadmap completeness unclear before broad build | `@ui-component-build probe` |
 | Audit readiness (verifiers + coverage + orphans) | `@ui-plan-verify audit` |
+| Pre-ship / all UI verifiers | `bash scripts/ui-ship-check.sh` (then `@ui-plan-verify audit`) |
 | External UX/a11y/token/copy references | read `resources/web-research-2026.md` (route via `@ui-process-router`) |
 | UI session close / commit (full repo) | `@session-control close` (Agent OS) |
 | `.work.ui`-scoped session verbs | `@ui-session start` / `status` / `context` / `add` / `commit` / `close` / `push` (any combination) |

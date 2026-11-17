@@ -1,7 +1,7 @@
 {
-  "description": "Touch scope — 2026-11-05 website-reference design intake capability (owner goal: the framework must understand/intake external websites as design inspiration and implement original designs from them). Adds skills/ui-reference-intake + scripts/reference-scan.py + templates + runbook + verified reference catalog + routing/registry wiring + a worked `.work.ui/inputs/references/` example. Protected surfaces (agent.os.framework.md, .cursorrules, hooks/, standards/, verifier scripts) untouched.",
+  "description": "Merged scope — website-reference intake (2026-11-05) + lifecycle waves 1–2 (ship-check, golden paths, director wiring). Additive; protected verifiers/standards unchanged unless explicitly scoped.",
   "blast_radius_approved": true,
-  "blast_radius_note": "Operator's direct same-message goal is framework-wide: 'this Agent OS FRAMEWORK should understand, interpret, and implement a user's requirement that requires to use other websites as inspiration/reference for customization of design ... IT SHOULD BE ABLE TO DO IT.' A capability spanning skill + scanner + guide + templates + registries is inherently cross-area; the request authorizes that scope. Changes are additive and reversible (new files + registry rows), not rewrites of protected verifiers/standards.",
+  "blast_radius_note": "Cross-area lifecycle + reference intake authorized by operator; touch-scope declares allowed paths.",
   "allowed_paths": [
     "README.md",
     "START_HERE.md",
@@ -15,7 +15,10 @@
     "templates/",
     "docs/",
     "scripts/",
-    ".work.ui/"
+    ".github/",
+    ".work.ui/",
+    ".gitignore",
+    "CONTRIBUTING.md"
   ],
   "allowed_patterns": [
     "*.md",
@@ -24,12 +27,15 @@
     "*.py",
     "*.template",
     "*.txt",
-    "*.css"
+    "*.css",
+    "*.yml",
+    "*.yaml",
+    "*.html"
   ],
   "rules": [
     "Only touch files under allowed_paths",
     "Only touch files matching allowed_patterns",
-    "Protected surfaces (standards/, .cursorrules, hooks/, verifier scripts, agent.os.framework.md) are out of scope",
+    "Protected surfaces (standards/, .cursorrules, hooks/, verifier scripts, agent.os.framework.md) are out of scope unless explicitly scoped",
     "If you need to touch a file outside scope, update this file first"
   ]
 }

@@ -29,7 +29,7 @@ Read-only audit that **surfaces** UI readiness gaps and routes them — the skil
 
 ```bash
 bash scripts/framework-verify.sh      # adopter: bash .ai.ui/scripts/framework-verify.sh
-                                      # (also self-tests token-lint + runs bootstrap-test)
+bash scripts/ui-ship-check.sh           # unified pre-ship (structure + process + tokens + copy scan)
 bash scripts/readiness-verify.sh
 bash scripts/traceability-verify.sh   # screen↔SPEC↔milestone chain
 # component token contract (adopter source; needs paths):
@@ -64,6 +64,7 @@ Close per the Operator handoff contract (Form A if nothing is needed; Form B wit
 1. Produce the candidate + reference histogram descriptors (adopter CI runs Playwright screenshots → descriptors; the framework itself needs no install).
 2. `bash scripts/ui-eval.sh --json <candidate.json> <reference.json>` (adopter: `.ai.ui/scripts/…`).
 3. Report verdict + flags; route `flag` results to the responsible skill (`@ui-visual-verify`, `@ui-copy`, `@ui-concept-run - UIS-09`). Never gate `@ui-component-build complete` on eval alone.
+4. Baselines: `bash scripts/ui-eval.sh --baseline-save <screen> <descriptor.json>` then `--baseline-compare <screen> <cand.json>` for trend checks (advisory).
 
 ## Pairs with
 

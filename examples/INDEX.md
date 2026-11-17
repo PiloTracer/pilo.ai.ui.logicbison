@@ -16,6 +16,12 @@
 
 **Vision agents:** Open PNG paths cited in manifests. **Text-only agents:** Use manifest **extractedRules**, **primitives**, **surfaces** columns + [`standards/20260523-SURFACE-AND-CONTROL-CRAFT.md`](../standards/20260523-SURFACE-AND-CONTROL-CRAFT.md).
 
+## Runnable (no install)
+
+| Path | Use |
+|------|-----|
+| [`runnable/token-demo/`](runnable/token-demo/README.md) | Browser preview of `.work.ui/design-system/tokens.css` — `@ui-director - show token demo` |
+
 ## External inspiration (URLs)
 
 Curated links: [`resources/README.md`](../resources/README.md)

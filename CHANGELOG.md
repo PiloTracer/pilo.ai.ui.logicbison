@@ -68,6 +68,8 @@
   - **P7 — Agent MCP surface** — `docs/guides/agent-mcp.md` (Storybook/Playwright/DevTools MCP configs, tier table) + `ui-bootstrap` pointer.
   - **P8 — Python desktop UI skills** — new **`ui-python-desktop`** skill (18th; FLET/PySide6/PyQt6 first-class, PyQt6 license note, zero-install framework) + primitive-map reference + runbook; `desktop-app` archetype; `desktop` bucket wired into director/router/dependencies; `token-lint` extended to `.py`; catalog §10.
   - **Post-audit (2026-07-31)** — desktop-app skill chain in `APPROACH.md`; desktop token binding in `DESIGN_TOKENS_STANDARD` §7; tracked `scripts/fixtures/python-desktop/` + `framework-verify` py_compile gates; completion audit + demo reports in `.work.ui/reports/`.
+- **Lifecycle wave (2026-11)** — `scripts/ui-ship-check.sh` unified pre-ship gate; `director-routing-selftest.sh` + golden TSV; `brand-catalog-verify.sh`; `copy-label-scan.sh` (WCAG 3.2.4 heuristic); [`docs/adoption/GOLDEN_PATHS.md`](docs/adoption/GOLDEN_PATHS.md); [`docs/guides/development-lifecycle.md`](docs/guides/development-lifecycle.md).
+- **Lifecycle wave 2** — `skill-size-check.sh`, `vision-checklist-verify.sh`, eval baselines (`ui-eval.sh --baseline-*`), `examples/runnable/token-demo/`, `vision-dry-run` CI workflow; `@ui-director` `ship` + `lifecycle` buckets wired through router + golden TSV.
 
 ### Changed
 
