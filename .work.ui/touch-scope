@@ -1,24 +1,24 @@
 {
-  "description": "Merged scope — website-reference intake (2026-11-05) + lifecycle waves 1–2 (ship-check, golden paths, director wiring). Additive; protected verifiers/standards unchanged unless explicitly scoped.",
+  "description": "Merged scope — reference intake + lifecycle waves 1–2 + generation-time AI UI quality (chrome lint, UIS-06 contract). Additive; protected surfaces unchanged unless explicitly scoped.",
   "blast_radius_approved": true,
-  "blast_radius_note": "Cross-area lifecycle + reference intake authorized by operator; touch-scope declares allowed paths.",
+  "blast_radius_note": "Operator-authorized cross-area commits; touch-scope declares allowed paths.",
   "allowed_paths": [
     "README.md",
     "START_HERE.md",
     "CHANGELOG.md",
     "APPROACH.md",
     "PROCESS_ROUTER.md",
+    "CONTRIBUTING.md",
+    ".gitignore",
     "skills/",
     "resources/",
-    "examples/",
     "concepts/",
     "templates/",
+    "examples/",
     "docs/",
     "scripts/",
     ".github/",
-    ".work.ui/",
-    ".gitignore",
-    "CONTRIBUTING.md"
+    ".work.ui/"
   ],
   "allowed_patterns": [
     "*.md",
@@ -35,7 +35,8 @@
   "rules": [
     "Only touch files under allowed_paths",
     "Only touch files matching allowed_patterns",
-    "Protected surfaces (standards/, .cursorrules, hooks/, verifier scripts, agent.os.framework.md) are out of scope unless explicitly scoped",
+    "Protected surfaces (standards/, .cursorrules, hooks/, agent.os.framework.md) are out of scope unless explicitly scoped",
+    "scripts/framework-verify.sh may gain additive self-tests only",
     "If you need to touch a file outside scope, update this file first"
   ]
 }

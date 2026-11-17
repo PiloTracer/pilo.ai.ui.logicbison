@@ -44,6 +44,15 @@ A B2B analytics landing page (`/home`) for a skeptical operations/analytics buye
 
 Breakpoints: 360 / 768 / 1024 / 1440. Container max 1,120 px; measure 62–70 ch.
 
+### Visual decision
+
+| Field | Value |
+|-------|-------|
+| Signature | Serif display promise ("Make performance legible.") with the product UI below the fold — not a gradient hero. |
+| Type roles | Display serif for the hero only; body and labels from the token scale. |
+| Density | marketing-airy |
+| Forbidden | `purple-gradient-hero`, `colored-glow-shadow`, `inter-hardcoded`, `icon-circle-feature`, `glass-card-default`, `placeholder-marketing`, `everything-centered`, `fake-metrics`. `three-identical-cards` waived: the three modules are numbered jobs (Connect, Compare, Act), each a different job, not icon-disc clones. |
+
 ## 5. Content
 
 - Hero: "Make performance legible." / one-line proof / "Start free".

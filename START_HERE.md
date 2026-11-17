@@ -163,6 +163,7 @@ Full-stack tasks: also follow `@code-implementation` for non-UI files ([`COHABIT
 | Check | Command |
 |-------|---------|
 | Visual / token drift | `@ui-visual-verify milestone` |
+| Default AI chrome | `bash scripts/ai-chrome-lint.sh` on the UI paths, then `@ui-concept-run - UIS-06` — contract [`resources/ai-ui-quality.md`](resources/ai-ui-quality.md) |
 | Accessibility | `@ui-accessibility-audit milestone` |
 | Dirty UI tree | `@ui-visual-verify uncommitted` |
 | Applicable UIS rows pending | `@ui-concept-run status` |
@@ -199,6 +200,7 @@ Full-stack tasks: also follow `@code-implementation` for non-UI files ([`COHABIT
 - [ ] Website references bound only via Approved direction + originality/a11y check?
 - [ ] Tokens/components standards applied (no magic hex in components)?
 - [ ] UI task gate run with real exit codes?
+- [ ] SPEC §4 visual decision filled, and UIS-06 scored [`resources/ai-ui-quality.md`](resources/ai-ui-quality.md) (chrome lint included)?
 - [ ] UIS-06 / UIS-07 per [`ui-visual-verify`](skills/ui-visual-verify/skill.md) when applicable?
 - [ ] UIS-08 intuitive UX check before ship?
 - [ ] UIS-03 effects / UIS-05 widgets checked when changed?

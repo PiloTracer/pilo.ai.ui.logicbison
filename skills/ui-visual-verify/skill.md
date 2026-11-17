@@ -27,6 +27,7 @@ description: >-
 
 1. `REPLACE:UI_VISUAL_TEST` exit 0 when configured (or documented baseline update with owner approval) — typically CI/browser; not an agent default
 2. **Token contract (machine):** `bash .ai.ui/scripts/token-lint.sh --tokens REPLACE:UI_TOKENS_FILE REPLACE:UI_APP_ROOT` exits 0 — no raw hex/color literals in component source (DESIGN_TOKENS_STANDARD). This is the deterministic backstop: an agent that hardcoded a color fails here, not in a prose grade. One-off exceptions need a trailing `token-lint-ignore` with a reason.
+2b. **AI chrome (machine):** `bash .ai.ui/scripts/ai-chrome-lint.sh --tokens REPLACE:UI_TOKENS_FILE REPLACE:UI_APP_ROOT` exits 0 — no purple/violet/fuchsia gradient utilities, matching glow shadows, hardcoded Inter, or stock marketing phrases ([`resources/ai-ui-quality.md`](../../resources/ai-ui-quality.md)). A line waiver is `ai-chrome-ignore` plus a reason. Layout classes in that contract (identical cards, centering, type, fake metrics) are still scored by UIS-06.
 3. Token file unchanged without accompanying visual diff review
 4. Storybook/build for UI package passes
 5. UIS registry: no `Applies=yes` + `pending`
@@ -72,6 +73,8 @@ Include section:
 ### Craft compliance
 - SPECs checked: …
 - §13 exampleIds: ok | gaps
+- AI chrome lint: pass | fail
+- Reject catalog (UIS-06): all pass | fails: …
 - Native control violations: none | …
 - UIS-07: done | pending | N/A
 - Reference fidelity: N/A | pass | fail (referenceIds: …)

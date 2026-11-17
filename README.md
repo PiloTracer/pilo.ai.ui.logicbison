@@ -60,6 +60,7 @@ Full playbook: [`examples/INDEX.md`](examples/INDEX.md)
 | [`resources/README.md`](resources/README.md) | External gallery URLs + resource index |
 | [`resources/reference-types.md`](resources/reference-types.md) | Two-axis reference taxonomy (site type × conversion goal) for "lead-generating"-style retrieval |
 | [`resources/effects-and-widgets.md`](resources/effects-and-widgets.md) | Effect tiers + performance/a11y budgets + modern widget matrix + commercial-safe libraries |
+| [`resources/ai-ui-quality.md`](resources/ai-ui-quality.md) | Generation-time bar: reject default AI chrome before code, then score it in UIS-06 |
 | **19 `ui-*` skills** | Bootstrap → foundation → spec → build → verify (+ plan audit + deploy + session + copy + python-desktop + reference-intake) |
 
 See [`APPROACH.md` §6](APPROACH.md#6-skills-we-explicitly-did-not-add) for skills we did not add (coverage via UI-PATTERNS).

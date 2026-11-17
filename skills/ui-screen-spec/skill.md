@@ -68,11 +68,13 @@ Follow [`examples/INDEX.md`](../../examples/INDEX.md) § playbook (Phases A–C)
 
 - No API schema duplication — link `.work/features/` SPECs
 - §12 UIS registry mandatory before `Approved`
+- §4 **visual decision** (signature, type roles, density, forbidden) filled from [`resources/ai-ui-quality.md`](../../resources/ai-ui-quality.md) before `Approved` — a `REPLACE:` row blocks build
 - §13 **exampleIds** + **extractedRules** mandatory when craft tier ≥ refined (or N/A waiver in HANDOFF_UI)
 - §8 must not allow native range/select/checkbox on primary flows if §13 cites examples requiring catalog primitives — unless `native allowed` waiver per row
 
 ## review checklist (additions)
 
+- [ ] §4 visual decision names one signature and does not leave `REPLACE:`
 - [ ] §13 shape matches SCREEN_SPEC_STANDARD §5
 - [ ] §11 includes manifest extractedRules
 - [ ] §8 catalog status consistent with CATALOG.md

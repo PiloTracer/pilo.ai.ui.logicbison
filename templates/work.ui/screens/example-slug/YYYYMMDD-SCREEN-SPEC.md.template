@@ -34,6 +34,17 @@ Regions, breakpoints (UIS-01). Map regions to example ids in §13 `regionMap`.
 |--------|------------|-------|
 | REPLACE:REGION | REPLACE:EXAMPLE_ID | |
 
+### Visual decision (required before Approved)
+
+One screen, one idea. Source: `.ai.ui/resources/ai-ui-quality.md` (framework root: `resources/ai-ui-quality.md`). Leave no `REPLACE:` when moving to Approved.
+
+| Field | Value |
+|-------|-------|
+| Signature | REPLACE: the one thing a user would remember |
+| Type roles | REPLACE: display / body / label — token names, not a framework default |
+| Density | REPLACE: marketing-airy \| product \| dense-operational |
+| Forbidden | REPLACE: reject-catalog ids this screen must not use |
+
 ## 5. Content
 
 Copy or i18n keys.

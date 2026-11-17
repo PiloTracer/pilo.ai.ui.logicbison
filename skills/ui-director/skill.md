@@ -170,6 +170,7 @@ Map the classified bucket to the correct skill chain. Respect the dependency gra
 | "Start a SaaS UI from scratch" | [`GOLDEN_PATHS.md`](../../docs/adoption/GOLDEN_PATHS.md) Path 1 → execute chain |
 | "Pre-ship check" / "before merge UI" | `bash scripts/ui-ship-check.sh` → route failures per lifecycle guide |
 | "Check the visuals before we commit" | `@ui-visual-verify uncommitted` → `@ui-accessibility-audit milestone` → `@ui-concept-run - UIS-06` (if agent-assisted) |
+| "This UI looks generic / AI-generated" | Read [`resources/ai-ui-quality.md`](../../resources/ai-ui-quality.md) → `bash scripts/ai-chrome-lint.sh` on the UI paths → `@ui-concept-run - UIS-06` → revise fails before any new screen |
 | "Write the error message for the login form" | `@ui-copy write - error for login` |
 | "Review the copy on the settings screen" | `@ui-copy review - .work.ui/screens/settings/...` |
 | "Check all the UI text is consistent" | `@ui-copy audit - .work.ui/screens/` |

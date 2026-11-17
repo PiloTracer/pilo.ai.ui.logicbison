@@ -81,7 +81,9 @@ Same structure as Agent OS iteration block but in `NEXT_UI.md`:
 |-------|--------|
 | Lint / type / unit tests | `.cursorrules` UI commands (`REPLACE:UI_*`) |
 | No raw hex in changed components | DESIGN_TOKENS_STANDARD |
-| UIS-06 when agent-assisted | `@ui-concept-run - UIS-06` |
+| No default AI chrome literals | `bash scripts/ai-chrome-lint.sh --tokens REPLACE:UI_TOKENS_FILE <touched UI paths>` — [`resources/ai-ui-quality.md`](../../resources/ai-ui-quality.md) |
+| SPEC §4 visual decision filled | signature, type roles, density, forbidden — not `REPLACE:` |
+| UIS-06 when agent-assisted | `@ui-concept-run - UIS-06` (scores the reject catalog; `ship` is invalid on any `fail`) |
 | UIS-07 when craft tier ≥ refined | `@ui-concept-run - UIS-07` |
 | UIS-03 when motion/effects change (Tier 2–3) | `@ui-concept-run - UIS-03` + [`resources/effects-and-widgets.md`](../../resources/effects-and-widgets.md) |
 | UIS-05 when a complex widget/flow changes | `@ui-concept-run - UIS-05` + APG mapping |
@@ -91,7 +93,9 @@ Same structure as Agent OS iteration block but in `NEXT_UI.md`:
 
 ## Self-revision loop (agent-assisted builds)
 
-For each generated/edited screen: **generate → render → assert → fix → re-assert (max 2 iterations)**. Use the static tier first (token-lint, rubrics, build); the vision tier only after operator authorization (§8.2). Log every iteration in the task Notes with an honest verdict — including regressions a fix introduced (a fix that drifts elsewhere is a failure to report, not a pass).
+Before the first generate on a screen, read [`resources/ai-ui-quality.md`](../../resources/ai-ui-quality.md) and the SPEC §4 visual decision. Do not start from a centered purple gradient, a row of identical cards, or stock marketing lines.
+
+For each generated/edited screen: **generate → render → assert → fix → re-assert (max 2 iterations)**. Assert with the static tier first (token-lint, `ai-chrome-lint.sh`, the reject catalog, build). The vision tier runs only after operator authorization (§8.2). Log every iteration in the task Notes with an honest verdict — including regressions a fix introduced (a fix that drifts elsewhere is a failure to report, not a pass).
 
 ## Full-stack tasks
 

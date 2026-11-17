@@ -2,7 +2,7 @@
 
 > **Demo skeleton.** In an adopter repo, **`@ui-component-build`** owns `## Current UI iteration`; **`ui-*` skills** and session close update **Recommended next**.
 
-**Updated:** 2026-11-05
+**Updated:** 2026-11-17
 
 ---
 
@@ -10,6 +10,7 @@
 
 | Item | Artifact |
 |------|----------|
+| 2026-11-17 — generation-time AI UI quality | `resources/ai-ui-quality.md`; `scripts/ai-chrome-lint.sh`; UIS-06 scores the reject catalog; SPEC §4 visual decision; build/verify gates; demo `home` decision filled |
 | 2026-11-05 — website-reference intake capability (19th skill) | `skills/ui-reference-intake/`, `scripts/reference-scan.py`, `docs/guides/web-reference-intake.md`, `resources/reference-types.md`, `resources/reference-sites.md`, templates; 13 live scans + Draft DNA; `trusted-growth` direction (Draft); scanner self-test 35/35, audit PASS, framework-verify PASS, touch-scope PASS, blast-radius PASS, gate-verify PASS |
 | 2026-11-05 — effects & modern widgets layer | `resources/effects-and-widgets.md`; UIS-03/UIS-05 expanded; CATALOG `Behavior source`/`APG pattern`/`States`; `ui-component-build` + `ui-visual-verify` gates for Tier 2–3 effects and complex widgets |
 | 2026-11-05 — `trusted-growth` approved + bound to `home`; SPEC approved | direction Approved; tokens applied (44 DTCG tokens valid; measured contrasts pass); `screens/home/20261105-SCREEN-SPEC.md` Approved; SPEC §13/§11 bound; screen map S3; `SCREEN_REFERENCE_MAP.md`; `find - lead-generating` → 8 refs; traceability PASS |

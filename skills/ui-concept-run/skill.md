@@ -20,7 +20,7 @@ description: >-
 ## Hard rules
 
 - Follow evidence tags in prompt outputs
-- **UIS-06 required** for agent-assisted UI before `@ui-component-build complete`
+- **UIS-06 required** for agent-assisted UI before `@ui-component-build complete`. The procedure loads [`resources/ai-ui-quality.md`](../../resources/ai-ui-quality.md) and scores every reject class. `ship` is invalid when any class is `fail`.
 - **UIS-07 required** when craft tier ≥ refined (foundation 01) at milestone verify
 - **UIS-08 required** for all screens before `@ui-component-build complete`
 - **UIS-09 required** for analytical dashboard screens at milestone verify

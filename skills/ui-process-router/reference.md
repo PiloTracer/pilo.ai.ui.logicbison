@@ -21,7 +21,7 @@
 | verify | before merge UI | `@ui-visual-verify milestone` | `ui-visual-verify/skill.md` |
 | plan-verify | "is the UI plan/roadmap ready?", probe coverage, orphan screens | `@ui-plan-verify audit` | `ui-plan-verify/skill.md` |
 | a11y | WCAG check | `@ui-accessibility-audit screen - <slug>` | `ACCESSIBILITY_STANDARD` |
-| concept | AI UI diff | `@ui-concept-run - UIS-06` | `concepts/README.md` |
+| concept | AI UI diff, generic chrome | `@ui-concept-run - UIS-06` | `resources/ai-ui-quality.md` |
 | session | close day (full repo) | `@session-control close` | `.ai/START_HERE.md` §5 |
 | session (`.work.ui`-scoped) | start / status / context / add / commit / close / push `.work.ui` session state | `@ui-session start` / `status` / `context` / `add` / `commit` / `close` / `push` (any combination) | `ui-session/skill.md` |
 | learn | reading order | read | `START_HERE.md` §8 |

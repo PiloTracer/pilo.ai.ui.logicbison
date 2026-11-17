@@ -44,7 +44,7 @@
 |---|---|---|---|---|
 | Open a screen SPEC | List UIS-01…10 in SPEC §12 | screen SPEC | **Required** |
 | `@ui-component-build plan` | Copy SPEC §12 → `### UIS registry` in NEXT_UI | `NEXT_UI.md` | **Required** |
-| Agent/Cursor UI session (default **AI-assisted: yes**) | [`ai-visual-quality/prompt.md`](ai-visual-quality/prompt.md) | PR, task Notes, NEXT_UI | **Required** unless **`human-only`** in same message |
+| Agent/Cursor UI session (default **AI-assisted: yes**) | [`ai-visual-quality/prompt.md`](ai-visual-quality/prompt.md) after [`resources/ai-ui-quality.md`](../resources/ai-ui-quality.md) | PR, task Notes, NEXT_UI | **Required** unless **`human-only`** in same message |
 | Craft tier ≥ refined; forms/settings/dashboards | [`surface-control-craft/prompt.md`](surface-control-craft/prompt.md) | PR, verify report | **Required** at milestone |
 | New theme or semantic color token | UIS-04 | ADR or token PR | **Required** |
 | New animation/effect beyond micro-feedback (Tier 2–3) | UIS-03 | screen SPEC or PR | **Required** for Tier 2–3 |

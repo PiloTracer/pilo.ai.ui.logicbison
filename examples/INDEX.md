@@ -49,7 +49,7 @@ Phase C — SPECs as contracts
 
 Phase D — Build & verify
   9. @ui-component-build plan - S0 (primitives) then S1 (screens)
- 10. @ui-concept-run - UIS-07 (tier ≥ refined) + UIS-06 (agent diffs) + UIS-09 (analytical dashboards)
+ 10. @ui-concept-run - UIS-07 (tier ≥ refined) + UIS-06 (agent diffs; load resources/ai-ui-quality.md first) + UIS-09 (analytical dashboards)
  11. @ui-visual-verify milestone — §13 craft checklist
 ```
 

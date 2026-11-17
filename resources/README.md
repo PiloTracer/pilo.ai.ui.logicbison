@@ -28,6 +28,10 @@ Curated (provenance: `appdesign/concept.mobiledesign.txt`):
 - [`reference-sites.md`](reference-sites.md) — 14 verified starting points (SaaS, lead-gen, scheduling, forms, fintech, nonprofit, commerce) with learn/avoid notes.
 - Intake workflow: [`docs/guides/web-reference-intake.md`](../docs/guides/web-reference-intake.md) · skill: [`skills/ui-reference-intake`](../skills/ui-reference-intake/skill.md).
 
+## AI UI quality (generation-time)
+
+[`ai-ui-quality.md`](ai-ui-quality.md) — reject catalog agents load before writing a screen, and that UIS-06 scores before `ship`. Machine half: `scripts/ai-chrome-lint.sh`.
+
 ## Effects & modern widgets
 
 [`effects-and-widgets.md`](effects-and-widgets.md) — effect tiers, performance/a11y budgets, modern widget matrix (dialog, command palette, combobox, data table, date picker, toast, drawer, carousel, dropzone, rich text), commercial-safe libraries, and Tier 3 signature-moment rules.

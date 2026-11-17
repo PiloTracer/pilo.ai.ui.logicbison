@@ -28,7 +28,7 @@ for p in \
   scripts/cursorrules-verify.sh scripts/sister-discovery.sh \
   scripts/ui-deploy-basic.sh scripts/ui-deploy-files.sh \
   scripts/ui-session.sh \
-  scripts/token-lint.sh scripts/bootstrap-test.sh \
+  scripts/token-lint.sh scripts/ai-chrome-lint.sh scripts/bootstrap-test.sh \
   scripts/token-schema-verify.sh scripts/ui-eval.sh \
   scripts/ui-ship-check.sh scripts/director-routing-selftest.sh \
   scripts/brand-catalog-verify.sh scripts/copy-label-scan.sh \
@@ -241,6 +241,7 @@ printf 'const c = "var(--color-accent)";\n' > "${tmpd}/tl-clean.tsx"
 printf 'const c = "#2f6df6";\n' > "${tmpd}/tl-dirty.tsx"
 selftest "token-lint accepts token usage" 0 "${ROOT}/scripts/token-lint.sh" "${tmpd}/tl-clean.tsx"
 selftest "token-lint rejects raw hex"     1 "${ROOT}/scripts/token-lint.sh" "${tmpd}/tl-dirty.tsx"
+selftest "ai-chrome-lint self-test"       0 "${ROOT}/scripts/ai-chrome-lint.sh" "--self-test"
 
 # Python desktop skeleton proofs (Phase 8): stdlib py_compile only — no pip/Qt/FLET required.
 desk_base="${ROOT}/scripts/fixtures/python-desktop"

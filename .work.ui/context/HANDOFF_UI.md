@@ -11,6 +11,17 @@
 **Closed:** 2026-11-17 (lifecycle waves 1–2 committed; prior 2026-11-05 reference-intake session preserved below)
 
 ## Latest action (@ui-director)
+**Date:** 2026-11-17
+**Request:** "Load the context, understand this project, and propose/generate a plan to improve the quality of "ai.ui" (aka "pilo.ai.ui.logicbison") Agent OS Framework for User Interface work through agentic code assistants. Analyze the purpose of this repo and take it to the next level. Generate a plan and Apply all the recommended fixes to take this to the next level, in order to get higher quality User Interfaces through AI."
+**Classified bucket:** `concept` + `verify-visual` + `screen-spec` (framework quality, not a product screen)
+**Executed:**
+1. Classified the repo purpose: skills, standards, and `.work.ui/` memory so agents ship accessible, on-brand UI instead of generic chrome. Process gates were already strong; generation-time taste was a 6-line UIS-06 checklist.
+2. Added `resources/ai-ui-quality.md` (reject catalog + pass rule) and `scripts/ai-chrome-lint.sh` (gradient, glow, Inter, stock phrases; `--self-test` PASS).
+3. Wired the contract into UIS-06, SPEC §4 visual decision (template + approved `home`), `@ui-component-build` pre-write and task gate, `@ui-visual-verify` check 2b, `@ui-concept-run`, director shortcut, process router, `START_HERE`, `README`, `examples/INDEX.md`, `CHANGELOG`. Additive self-test in `scripts/framework-verify.sh` (same-message apply-all; check strengthened, not weakened).
+**Blockers:** none in this repo. Building `home` still belongs in an application repo.
+**Next recommended:** in the app repo, `@ui-component-build plan - S1` for `home` — the visual decision is filled; run `ai-chrome-lint` on the first diff.
+
+## Prior action (@ui-director)
 **Date:** 2026-11-05
 **Request:** "all approved"
 **Classified bucket:** `reference` (SPEC approval) + build handoff
